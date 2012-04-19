@@ -1,0 +1,49 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+    Carryit - Annulation de colis
+{% endblock %}
+
+{% block header %}
+    annuler mon colis
+{% endblock %}
+
+{% block body %}
+    {% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        <b>{{ app.session.flash('notice') }}</b>
+    </div>
+    {% endif %}
+     
+    <div>
+        <h4>Souhaitez-vous supprimer ce colis ?</h4>
+    </div> 
+    
+    <div>
+        Colis de {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
+        vers {{ entity.villearrivee }}
+
+        <br /> contenu du colis : {{ entity.Categorie }}
+
+        <br /> date de livraison souhaitée : 
+        {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
+
+        <br /> destinataire : {{ entity.NomDestinataire }} - 
+        joignable au: {{ entity.TelephoneDestinataire }}
+
+        <br /> {% if entity.complementinfo %}
+        infos complémentaires : {{ entity.complementinfo }}
+        {% endif%}
+    </div>
+
+    <form action="{{ path('CitTestBundle_deleteuserpacket', { 'id': entity.id }) }}" method="post">
+        <p>
+            <br/>
+            <button type="submit">Supprimer</button>
+        </p>
+    </form>
+
+    <a href="{{ path('CitTestBundle_useractivitypage') }}">
+        retour à la liste
+    </a>
+{% endblock %}

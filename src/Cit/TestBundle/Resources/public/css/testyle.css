@@ -1,0 +1,35 @@
+body
+{
+	background-color: white;
+}
+
+h1
+{
+	color: green; 
+}
+
+h4
+{
+	color: maroon; 
+}
+
+aside
+{
+	background-color: white;
+}
+
+.trip
+{
+	position:absolute;
+    left: 50px;
+    top: 130px;
+    background-color: green;
+}
+
+.packet
+{
+	position:absolute;
+    left: 600px;
+    top: 130px;
+    background-color: red;
+}

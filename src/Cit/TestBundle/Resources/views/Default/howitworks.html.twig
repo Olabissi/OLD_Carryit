@@ -1,0 +1,18 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	Carryit - Comment ça marche
+{% endblock %}
+
+{% block topmenu %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block header %}
+    Comment ça marche ?
+{% endblock %}
+
+{% block body %}
+	comment ça marche ?
+{% endblock %}

@@ -1,0 +1,30 @@
+user:
+    pattern:  /
+    defaults: { _controller: "CitUserBundle:User:index" }
+
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CitUserBundle:User:show" }
+
+user_new:
+    pattern:  /new
+    defaults: { _controller: "CitUserBundle:User:new" }
+
+user_create:
+    pattern:  /create
+    defaults: { _controller: "CitUserBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CitUserBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CitUserBundle:User:update" }
+    requirements: { _method: post }
+
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CitUserBundle:User:delete" }
+    requirements: { _method: post }

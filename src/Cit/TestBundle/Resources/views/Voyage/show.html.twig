@@ -1,0 +1,57 @@
+<h1>Voyage</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Aeroport_depart</th>
+            <td>{{ entity.aeroportdepart }}</td>
+        </tr>
+        <tr>
+            <th>Aeroport_arrivee</th>
+            <td>{{ entity.aeroportarrivee }}</td>
+        </tr>
+        <tr>
+            <th>Heure_depart</th>
+            <td>{{ entity.heuredepart|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Heure_arrivee</th>
+            <td>{{ entity.heurearrivee|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Nb_kg_disponibles</th>
+            <td>{{ entity.nbkgdisponibles }}</td>
+        </tr>
+        <tr>
+            <th>Prix_par_kg</th>
+            <td>{{ entity.prixparkg }}</td>
+        </tr>
+        <tr>
+            <th>Compagnie_air</th>
+            <td>{{ entity.compagnieair }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('voyage') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('voyage_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('voyage_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

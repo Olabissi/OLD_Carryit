@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+		<title>{% block title %}{% endblock %}</title>
+
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
+		{% endblock %}
+	</head>
+
+	<body>
+		<div id="topmenu" class="navbar">
+	        <div id="logo">
+	        	<a href="{{ url('CitTestBundle_homepage') }}">
+		        	<img src="{{ asset('bundles/cittest/images/logo_carryit.png') }}" alt="carryit" 
+						width="100" />
+				</a>
+			</div>
+			<div id= "logo_commentaire" class = "span3" >
+				<h3>Carryit</h3>
+				<h4>transport aérien de colis<br /> entre particuliers</h4>
+			</div>
+			<div id="topmenucontent">
+	        	{% block topmenu %}
+				{% endblock %}
+			</div>
+		</div>
+
+        <div id="pubtop" class="container">
+        	<h1>PUBLICITE</h1>
+        </div>
+
+		<div class="container"> 
+			<div class="row">
+				<div id="header" class="span12">
+        			{% block header %}
+        			{% endblock %}
+       			</div>
+
+				<div id="content" class="span12">
+					{% block body %}
+					{% endblock %}
+				</div>
+			</div>
+
+			<div id="footer" class = "hero-unit">
+				<div id = "footerleft">
+					<a href="{{ url('CitTestBundle_whoarewepage') }}">
+						<br />Qui sommes-nous ?
+					</a>
+				</div>
+				
+				<div id = "footermiddle">
+					<a href="{{ url('CitTestBundle_howitworkspage') }}">
+						<br />Comment ça marche ?
+					</a>
+				</div>
+
+				<div id = "footerright">
+					<a href="{{ url('CitTestBundle_termsconditionspage') }}">
+						<br />Conditions Générales d'Utilisation et de Vente
+					</a>
+				</div>
+
+				<div id = "copyright">
+					<p> 2012 Carryit - Tous Droits Réservés </p>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	{% block javascripts %}
+		{# Ajoutez ce javascript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+		<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+	{% endblock %}
+</html>

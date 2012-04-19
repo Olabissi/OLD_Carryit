@@ -1,0 +1,42 @@
+{% block fos_user_content %}
+
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+{% if name == 'anonym' %}
+<div id = "login" class = "span7">
+	<form action="{{ path("fos_user_security_check") }}" method="post">
+	    <div>
+		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+		    <input type="text" id="username" name="_username" value="identifiant" onclick="_username.value='';"/>
+		    <input type="password" id="password" name="_password" value="thepasswd" onclick="_password.value='';"/>
+		    <input type="submit" id="_submit" name="_submit" value="se connecter" />
+	    </div>
+	    <div>
+		    <label>
+		    	<input type="checkbox" id="remember_me" name="_remember_me" value="off">se souvenir de moi
+		    </label>
+		    <div id = "reset_homepage">
+			    <a href="{{ url('fos_user_resetting_request') }}">
+			    mot de passe oublié ?
+			    </a>
+		    </div>
+	    </div>
+	</form>
+</div>
+{% endif %}
+
+{% if name != 'anonym' %}
+<div id = "logout"> 
+	<p>{{name}}, vous êtes connecté</p>
+	<br />
+	<a href="{{ url('fos_user_security_logout') }}">
+		Déconnexion
+	</a>
+</div>
+{% endif %}
+
+
+{% endblock fos_user_content %}
+    

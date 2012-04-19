@@ -1,0 +1,51 @@
+<h1>Colis list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Categorie</th>
+            <th>Poids_kg</th>
+            <th>Date_livraison_souhaitee</th>
+            <th>Ville_depart</th>
+            <th>Ville_arrivee</th>
+            <th>Nomdestinataire</th>
+            <th>Telephonedestinataire</th>
+            <th>Info</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('colis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.Categorie }}</td>
+            <td>{{ entity.Poidskg }}</td>
+            <td>{% if entity.datelivraisonsouhaitee %}{{ entity.datelivraisonsouhaitee|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{{ entity.villedepart }}</td>
+            <td>{{ entity.villearrivee }}</td>
+            <td>{{ entity.NomDestinataire }}</td>
+            <td>{{ entity.TelephoneDestinataire }}</td>
+            <td>{{ entity.complement_info }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('colis_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('colis_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('colis_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

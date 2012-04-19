@@ -1,0 +1,49 @@
+<h1>Voyage list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Aeroport_depart</th>
+            <th>Aeroport_arrivee</th>
+            <th>Heure_depart</th>
+            <th>Heure_arrivee</th>
+            <th>Nb_kg_disponibles</th>
+            <th>Prix_par_kg</th>
+            <th>Compagnie_air</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('voyage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.aeroportdepart }}</td>
+            <td>{{ entity.aeroportarrivee }}</td>
+            <td>{% if entity.heuredepart %}{{ entity.heuredepart|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{% if entity.heurearrivee %}{{ entity.heurearrivee|date('Y-m-d H:i:s') }}{% endif%}</td>
+            <td>{{ entity.nbkgdisponibles }}</td>
+            <td>{{ entity.prixparkg }}</td>
+            <td>{{ entity.compagnieair }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('voyage_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('voyage_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('voyage_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

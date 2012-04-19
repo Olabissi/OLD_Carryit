@@ -1,0 +1,18 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	Carryit - Présentation
+{% endblock %}
+
+{% block topmenu %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block header %}
+    Qui sommes-nous ?
+{% endblock %}
+
+{% block body %}
+	?
+{% endblock %}

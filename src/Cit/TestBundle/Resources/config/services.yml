@@ -1,0 +1,7 @@
+parameters:
+#    cit_test.example.class: Cit\TestBundle\Example
+
+services:
+#    cit_test.example:
+#        class: %cit_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

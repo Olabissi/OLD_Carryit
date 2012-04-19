@@ -1,0 +1,16 @@
+CitAccountBundle_homepage:
+    pattern:  /myaccount
+    defaults: { _controller: CitAccountBundle:Default:index }
+
+CitAccountBundle_editinfospage:
+    pattern:  /myaccount/editinfos
+    defaults: { _controller: CitAccountBundle:Default:editInfos }
+
+CitAccountBundle_updateinfos:
+    pattern:  /myaccount/updateinfos
+    defaults: { _controller: CitAccountBundle:Default:updateInfos }
+    requirements: { _method: post }
+
+CitAccountBundle_changepwd:
+    pattern:  /myaccount/changepwd
+    defaults: { _controller: CitAccountBundle:Default:changePwd }

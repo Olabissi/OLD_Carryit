@@ -1,0 +1,18 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	Carryit - Conditions Générales
+{% endblock %}
+
+{% block topmenu %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block header %}
+    CGU - CGV
+{% endblock %}
+
+{% block body %}
+	CGU - CGV
+{% endblock %}

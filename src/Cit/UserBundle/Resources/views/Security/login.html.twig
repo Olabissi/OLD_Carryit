@@ -1,0 +1,25 @@
+{% extends "CitUserBundle::layout.html.twig" %}
+{% block title %}Authentification{% endblock %}
+
+{% block fos_user_content %}
+
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username"> identifiant </label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+    <label for="password"> mot de passe </label>
+    <input type="password" id="password" name="_password" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me"> se souvenir de moi </label>
+
+    <input type="submit" id="_submit" name="_submit" value="Valider" />
+</form>
+
+{% endblock fos_user_content %}

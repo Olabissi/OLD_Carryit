@@ -1,0 +1,5 @@
+CitUserBundle_user:
+    resource: "@CitUserBundle/Resources/config/routing/user.yml"
+    prefix:   /cruduser
+
+

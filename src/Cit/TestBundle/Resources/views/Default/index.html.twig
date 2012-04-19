@@ -1,0 +1,111 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	Carryit - Vos colis vont voyager
+{% endblock %}
+
+{% block topmenu %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block header %}
+    Accueil
+{% endblock %}
+
+{% block body %}
+<div id="article" class = "span7">
+	<h3 align = "center">Le Concept</h3>
+	<div id="explicationsvoyageur" class= "span3">
+		<h5 style= "color: #ff9900;"> Vous voyagez et n'utilisez pas tous vos kilos ? </h5>
+		<br/>
+		<ol>
+			<li>
+				Vous enregistrez les informations de <b>votre voyage</b> dans votre profil
+			</li>
+			<br/>
+			<li>
+				<b>Carryit vous met en relation</b> avec une personne souhaitant vous confier un colis à transporter
+			</li>
+			<br/>
+			<li>
+				<b>Vous rencontrez l'expéditeur</b> physiquement, vérifiez le contenu du colis et finalisez avec lui les arrangements concernant <b>votre rémunération</b> pour le service que vous lui rendez
+			</li>
+			<br/>
+			<li>
+				<b>Vous voyagez avec le colis</b> et le remettez en main propre au <b>destinataire</b> qui vous a été spécifié par l'expéditeur
+			</li>
+			<br/>
+		</ol>
+	</div>
+	<div id="explicationsexpediteur" class="span3">
+		<h5 style= "color: #009900;"> Vous avez un colis à envoyer à un proche ? </h5>
+		<br/>
+		<ol>
+			<li>
+				Vous enregistrez les informations sur <b>votre colis</b> dans votre profil
+			</li>
+			<br/>
+			<li>
+				<b>Carryit vous met en relation</b> avec une personne souhaitant transporter votre colis
+				pour vous
+			</li>
+			<br/>
+			<br/>
+			<li>
+				<b>Vous rencontrez le voyageur</b> physiquement, lui montrez le contenu du colis
+				et finalisez avec lui les arrangements concernant sa rémunération pour le service qu'il vous rend
+			</li>
+			<br/>
+			<li>
+				<b>Le voyageur transporte votre colis</b> et remet le colis en main propre au 
+				<b>destinataire</b> que vous lui avez spécifié
+			</li>
+			<br/>
+		</ol>
+	</div>
+	<div id="schemaconcept">
+    	<img src="{{ asset('bundles/cittest/images/concept.png') }}" alt="concept" 
+			width="500" height="500"/>
+	</div>
+</div>
+
+{% if name == 'anonym' %}
+<div id="signup" class = "span4">
+	<h4 style="font-weight:bold;">Pas encore inscrit ? Rejoignez-nous !</h4>
+	<br/>
+	{% include 'CitUserBundle:Registration:register_nude.html.twig' with 
+	{'theme': theme, 'form': userform} %}
+	<br />
+</div>
+{% endif %}
+
+{% if name != 'anonym' %}
+<div id = "connecteduser_btns" class = "span4">
+	<div id = "btnmonprofil" class="btn">
+		<a href="{{ url('CitTestBundle_useractivitypage') }}">
+			voir mon activité
+			<br />
+		</a>
+	</div>
+
+	<div id = "btnvoyage" class="btn">
+		<a href="{{ url('CitTestBundle_addtrippage') }}">
+			transporter un colis
+			<br />
+		</a>
+	</div>
+
+	<div id = "btncolis" class="btn">
+		<a href="{{ url('CitTestBundle_addpacketpage') }}">
+			envoyer un colis
+			<br />
+		</a>
+	</div>
+</div>
+{% endif %}
+{% endblock %}
+	
+		
+
+

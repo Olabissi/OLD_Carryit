@@ -1,0 +1,82 @@
+CitTestBundle_crtestuser:
+    resource: "routing/testuser.yml"
+    prefix:   /crudtestuser
+
+CitTestBundle_crudvoyage:
+    resource: "routing/voyage.yml"
+    prefix:   /crudvoyage
+
+CitTestBundle_crudcolis:
+    resource: "routing/colis.yml"
+    prefix:   /crudcolis
+
+CitTestBundle_homepage:
+    pattern:  /
+    defaults: { _controller: CitTestBundle:Default:index }
+
+CitTestBundle_whoarewepage:
+    pattern:  /who
+    defaults: { _controller: CitTestBundle:Default:showWho }
+
+CitTestBundle_howitworkspage:
+    pattern:  /howitworks
+    defaults: { _controller: CitTestBundle:Default:showHow }
+
+CitTestBundle_termsconditionspage:
+    pattern:  /termsconditions
+    defaults: { _controller: CitTestBundle:Default:showTerms }
+
+CitTestBundle_adduserpage:
+    pattern:  /adduser
+    defaults: { _controller: CitTestBundle:Default:addUser }
+
+CitTestBundle_useractivitypage:
+    pattern:  /useractivity
+    defaults: { _controller: CitTestBundle:Default:indexUserActivity }
+
+CitTestBundle_addtrippage:
+    pattern:  /addtrip
+    defaults: { _controller: CitTestBundle:Default:addTrip }
+
+CitTestBundle_addpacketpage:
+    pattern:  /addpacket
+    defaults: { _controller: CitTestBundle:Default:addPacket }
+
+CitTestBundle_editusertrippage:
+    pattern:  /useractivity/{id}/edittrip
+    defaults: { _controller: CitTestBundle:Default:editTrip }
+
+CitTestBundle_updateusertrip:
+    pattern:  /useractivity/{id}/updatetrip
+    defaults: { _controller: CitTestBundle:Default:updateTrip }
+    requirements: { _method: post }
+
+CitTestBundle_cancelusertrippage:
+    pattern:  /useractivity/{id}/canceltrip
+    defaults: { _controller: CitTestBundle:Default:cancelTrip }
+
+CitTestBundle_deleteusertrip:
+    pattern:  /useractivity/{id}/deletetrip
+    defaults: { _controller: CitTestBundle:Default:deleteTrip }
+    requirements: { _method: post }
+
+CitTestBundle_edituserpacketpage:
+    pattern:  /useractivity/{id}/editpacket
+    defaults: { _controller: CitTestBundle:Default:editPacket }
+
+CitTestBundle_updateuserpacket:
+    pattern:  /useractivity/{id}/updatepacket
+    defaults: { _controller: CitTestBundle:Default:updatePacket }
+    requirements: { _method: post }
+
+CitTestBundle_canceluserpacketpage:
+    pattern:  /useractivity/{id}/cancelpacket
+    defaults: { _controller: CitTestBundle:Default:cancelPacket }
+
+CitTestBundle_deleteuserpacket:
+    pattern:  /useractivity/{id}/deletepacket
+    defaults: { _controller: CitTestBundle:Default:deletePacket }
+    requirements: { _method: post }
+
+
+

@@ -1,0 +1,43 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+    Carryit - Annulation de voyage
+{% endblock %}
+
+{% block header %}
+    annuler mon voyage
+{% endblock %}
+
+{% block body %}
+    {% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        <b>{{ app.session.flash('notice') }}</b>
+    </div>
+    {% endif %}
+     
+    <div>
+        <h4>Souhaitez-vous supprimer ce voyage ?</h4>
+    </div> 
+
+    <div>
+        Voyage de {{ entity.aeroportdepart }} vers {{ entity.aeroportarrivee }}
+        <br /> départ le {{ entity.heuredepart|date('d-m-Y') }} à {{ entity.heuredepart|date('H:i') }},
+        arrivée le {{ entity.heurearrivee|date('d-m-Y') }} à {{ entity.heurearrivee|date('H:i') }}
+        <br /> via {{ entity.compagnieair }}
+        <br /> {{ entity.nbkgdisponibles }} kilos proposés, à {{ entity.prixparkg }} € le kilo
+        <br />
+    </div>
+
+    <form action="{{ path('CitTestBundle_deleteusertrip', { 'id': entity.id }) }}" method="post">
+        <p>
+            <br/>
+            <button type="submit">Supprimer</button>
+        </p>
+    </form>
+
+    <a href="{{ path('CitTestBundle_useractivitypage') }}">
+        retour à la liste
+    </a>
+{% endblock %}
+
+

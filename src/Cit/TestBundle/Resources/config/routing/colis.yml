@@ -1,0 +1,30 @@
+colis:
+    pattern:  /
+    defaults: { _controller: "CitTestBundle:Colis:index" }
+
+colis_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CitTestBundle:Colis:show" }
+
+colis_new:
+    pattern:  /new
+    defaults: { _controller: "CitTestBundle:Colis:new" }
+
+colis_create:
+    pattern:  /create
+    defaults: { _controller: "CitTestBundle:Colis:create" }
+    requirements: { _method: post }
+
+colis_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CitTestBundle:Colis:edit" }
+
+colis_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CitTestBundle:Colis:update" }
+    requirements: { _method: post }
+
+colis_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CitTestBundle:Colis:delete" }
+    requirements: { _method: post }

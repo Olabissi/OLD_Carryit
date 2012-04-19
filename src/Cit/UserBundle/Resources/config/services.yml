@@ -1,0 +1,12 @@
+services: 
+    cit_user.profile.form.type:
+        arguments: [%fos_user.model.user.class%]
+        class: Cit\UserBundle\Form\Type\ProfileFormType 
+        tags: 
+            -  { name: form.type, alias: cit_user_profile }
+
+    #cit_user_registration: 
+        #arguments: [%fos_user.model.user.class%]
+        #class: Cit\UserBundle\Form\Type\RegistrationFormType 
+        #tags: 
+            #-  { name: form.type, alias: cit_user_registration }

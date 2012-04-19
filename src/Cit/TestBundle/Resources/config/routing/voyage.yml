@@ -1,0 +1,30 @@
+voyage:
+    pattern:  /
+    defaults: { _controller: "CitTestBundle:Voyage:index" }
+
+voyage_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CitTestBundle:Voyage:show" }
+
+voyage_new:
+    pattern:  /new
+    defaults: { _controller: "CitTestBundle:Voyage:new" }
+
+voyage_create:
+    pattern:  /create
+    defaults: { _controller: "CitTestBundle:Voyage:create" }
+    requirements: { _method: post }
+
+voyage_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CitTestBundle:Voyage:edit" }
+
+voyage_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CitTestBundle:Voyage:update" }
+    requirements: { _method: post }
+
+voyage_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CitTestBundle:Voyage:delete" }
+    requirements: { _method: post }

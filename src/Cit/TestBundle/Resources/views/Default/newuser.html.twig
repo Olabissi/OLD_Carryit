@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Inscription</title>
+		{% block stylesheets %}
+            <link href="{{ asset('testyle.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+	</head>
+
+	<body>
+		<header>
+			<h1>Inscription</h1>
+		</header>
+
+        <section>
+			<form method="post" {{ form_enctype(form) }}>
+
+				{{ form_widget(form) }}
+				
+				<input type="submit" />
+			</form>
+
+			<aside>
+				<a href="{{ url('CitTestBundle_addtrippage') }}">
+			  		<br />Nouveau Voyage
+				</a>
+				<a href="{{ url('CitTestBundle_addpacketpage') }}">
+			  		<br />Nouveau Colis
+				</a>
+			</aside>
+		</section>
+	</body>
+
+</html>
