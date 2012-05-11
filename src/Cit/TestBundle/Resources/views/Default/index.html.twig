@@ -70,40 +70,39 @@
 	</div>
 </div>
 
-{% if name == 'anonym' %}
-<div id="signup" class = "span4">
-	<h4 style="font-weight:bold;">Pas encore inscrit ? Rejoignez-nous !</h4>
-	<br/>
-	{% include 'CitUserBundle:Registration:register_nude.html.twig' with 
-	{'theme': theme, 'form': userform} %}
-	<br />
-</div>
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<div id = "connecteduser_btns" class = "span4">
+		<div id = "btnmonprofil" class="btn">
+			<a href="{{ url('CitTestBundle_useractivitypage') }}">
+				voir mon activité
+				<br />
+			</a>
+		</div>
+
+		<div id = "btnvoyage" class="btn">
+			<a href="{{ url('CitTestBundle_addtrippage') }}">
+				transporter un colis
+				<br />
+			</a>
+		</div>
+
+		<div id = "btncolis" class="btn">
+			<a href="{{ url('CitTestBundle_addpacketpage') }}">
+				envoyer un colis
+				<br />
+			</a>
+		</div>
+	</div>
+{% else %}
+	<div id="signup" class = "span4">
+		<h4 style="font-weight:bold;">Pas encore inscrit ? Rejoignez-nous !</h4>
+		<br/>
+		{% include 'CitUserBundle:Registration:register_nude.html.twig' with 
+		{'theme': theme, 'form': userform} %}
+		<br />
+	</div>
 {% endif %}
 
-{% if name != 'anonym' %}
-<div id = "connecteduser_btns" class = "span4">
-	<div id = "btnmonprofil" class="btn">
-		<a href="{{ url('CitTestBundle_useractivitypage') }}">
-			voir mon activité
-			<br />
-		</a>
-	</div>
-
-	<div id = "btnvoyage" class="btn">
-		<a href="{{ url('CitTestBundle_addtrippage') }}">
-			transporter un colis
-			<br />
-		</a>
-	</div>
-
-	<div id = "btncolis" class="btn">
-		<a href="{{ url('CitTestBundle_addpacketpage') }}">
-			envoyer un colis
-			<br />
-		</a>
-	</div>
-</div>
-{% endif %}
 {% endblock %}
 	
 		

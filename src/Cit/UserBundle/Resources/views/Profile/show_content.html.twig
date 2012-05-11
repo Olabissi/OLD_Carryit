@@ -3,7 +3,7 @@
     <p>email: {{ user.email }}</p>
     <p>prenom : {{user.prenom }}</p>
     <p>nom : {{user.nom }}</p>
-    <p>naissance le : {{user.datedenaissance }}</p>
+    <p>naissance le : {{user.datedenaissance|date('d-m-Y')}}</p>
     <p>telephone : {{user.mobilephone }}</p>
     <p>adresse : {{user.adresse }}</p>
 </div>

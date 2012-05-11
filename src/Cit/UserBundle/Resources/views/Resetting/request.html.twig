@@ -1,0 +1,10 @@
+{% extends "::layout.html.twig" %}
+{# On hérite du layout qui est dans le répertoire CarryitV0.0/app, et non pas du "CitUserBundle::layout.html.twig" #}
+
+{% block title %}
+	oubli de mot de passe
+{% endblock %}
+
+{% block body %}
+	{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock body %}

@@ -1,33 +1,49 @@
+{% extends "::layout.html.twig" %} 
 {# On hérite du layout qui est dans le répertoire CarryitV0.0/app #}
-{% extends "::layout.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}
+    Carry it - compte de {{ user.username }}
+{% endblock %}
 
-{# Dans notre layout, il faut définir le block body #}
+{% block topmenu %}
+    {% if error %}
+        {% include 'CitUserBundle:Security:login_nude.html.twig' with {'error': error, 'name': user.username } %}
+    {% else %}
+        {% include 'CitUserBundle:Security:login_nude.html.twig' with { 'name': user.username } %}
+    {% endif %}
+{% endblock %} 
+
+{% block header %}
+{% endblock %}
+
 {% block body %}
-
 {# On y place le contenu du layout par défaut de FOSUB : https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/views/layout.html.twig #}
+    <div>
+        {% if (is_granted("IS_AUTHENTICATED_REMEMBERED") == false) %}
+            <a href="{{ path('fos_user_security_login') }}"></a>
+        {% endif %}
+    </div>
 
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}"></a>
-            {% endif %}
-        </div>
+    {% for key, message in app.session.getFlashes() %}
+    <div class="{{ key }}">
+        {{ message|trans({}, 'FOSUserBundle') }}
+    </div>
+    {% endfor %}
 
-        {% for key, message in app.session.getFlashes() %}
-        <div class="{{ key }}">
-            {{ message|trans({}, 'FOSUserBundle') }}
-        </div>
-        {% endfor %}
+    <div id="surlecote" class = "span2">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ url('CitUserBundle_homepage') }}">mes infos</a></li>
+            <li><a href="{{ url('CitUserBundle_editinfospage') }}">changer mes infos</a></li>
+            <li><a href="{{ url('CitUserBundle_changepwd') }}">changer mon mot de passe</a></li>
+            <li><a href="{{ url('CitUserBundle_homepage') }}">supprimer mon compte</a></li>
+        </ul>
+    </div>
 
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-        </div>
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock %}
 
+{% block javascripts %}
 {% endblock %}

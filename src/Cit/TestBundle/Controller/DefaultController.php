@@ -4,6 +4,8 @@ namespace Cit\TestBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Security\Core\SecurityContext;
 use Cit\TestBundle\Entity\Voyage;
 use Cit\TestBundle\Entity\Colis;
 use Cit\TestBundle\Entity\VoyageColis;
@@ -14,8 +16,7 @@ use Cit\TestBundle\Form\ColisHandler;
 use Cit\UserBundle\Entity\User;
 use Cit\UserBundle\Form\UserForm;
 use Cit\UserBundle\Form\UserHandler;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\Security\Core\SecurityContext;
+use FOS\UserBundle\Model\UserInterface;
 
 class DefaultController extends Controller
 {
@@ -80,44 +81,6 @@ class DefaultController extends Controller
             'name' => $current_user-> getUsername(),
             'error' => $error,
         ));
-    }
-
-    public function addUserAction()
-    {
-        //On récupère l'utilisateur connecté
-        $current_user = $this->container->get('security.context')->getToken()->getUser();
-
-        //Traiter le cas où le user est déjà authentifié : le renvoyer sur la page d'accueil
-        if( is_object($current_user) )
-        {
-            $name = "Vous êtes déjà inscrit";
-
-            return $this->render('CitTestBundle:Default:index.html.twig', 
-            array('name' => $name));
-        }
-
-        // On crée un objet User.
-        $user = new User;
-
-        // À partir du formBuilder, on génère le formulaire.
-        $form = $this->createForm(new UserForm, $user);
-
-        // On crée le gestionnaire pour ce formulaire, avec les outils dont il a besoin
-        $formHandler = new UserHandler($form, $this->get('request'), $this->getDoctrine()->getEntityManager());
-
-        // On exécute le traitement du formulaire. S'il retourne true, alors le formulaire a bien été traité
-        if( $formHandler->process() )
-        {
-
-            //$this->get('session')->setFlash('notice', 'Inscription Validée!');
-            return $this->redirect( $this->generateUrl('CitTestBundle_adduserpage'));
-        }
-
-        // Et s'il retourne false alors la requête n'était pas en POST ou le formulaire non valide.
-        // On réaffiche donc le formulaire...
-        return $this->render('CitTestBundle:Default:newuser.html.twig', 
-            array('form' => $form->createView(),)
-            );
     }
 
     public function addTripAction()

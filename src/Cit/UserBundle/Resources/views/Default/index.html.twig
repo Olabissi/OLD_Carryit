@@ -1,11 +1,9 @@
 {% extends "CitUserBundle::layout.html.twig" %}
 
 {% block header %}
-	Modifier mes infos
+	Mes infos
 {% endblock %}
 
 {% block fos_user_content %}
-	{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+	{% include 'FOSUserBundle:Profile:show.html.twig' with {'user': user} %}
 {% endblock %}
-
-

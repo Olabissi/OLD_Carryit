@@ -1,7 +1,3 @@
-CitTestBundle_crtestuser:
-    resource: "routing/testuser.yml"
-    prefix:   /crudtestuser
-
 CitTestBundle_crudvoyage:
     resource: "routing/voyage.yml"
     prefix:   /crudvoyage
@@ -25,10 +21,6 @@ CitTestBundle_howitworkspage:
 CitTestBundle_termsconditionspage:
     pattern:  /termsconditions
     defaults: { _controller: CitTestBundle:Default:showTerms }
-
-CitTestBundle_adduserpage:
-    pattern:  /adduser
-    defaults: { _controller: CitTestBundle:Default:addUser }
 
 CitTestBundle_useractivitypage:
     pattern:  /useractivity

@@ -1,6 +1,6 @@
-CitAccountBundle:
-    resource: "@CitAccountBundle/Resources/config/routing.yml"
-    prefix:   /
+#CitAccountBundle:
+    #resource: "@CitAccountBundle/Resources/config/routing.yml"
+    #prefix:   /
 
 CitTestBundle:
     resource: "@CitTestBundle/Resources/config/routing.yml"

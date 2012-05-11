@@ -9,6 +9,6 @@ Carryit - Compte de {{name}}
 {% endblock %}
 
 {% block CitAccountbody %}
-	
+	{% include 'FOSUserBundle:Profile:show.html.twig' with {'user': user} %}
 {% endblock %}
 

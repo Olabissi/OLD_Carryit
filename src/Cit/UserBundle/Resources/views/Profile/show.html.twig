@@ -1,1 +1,9 @@
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% extends "CitUserBundle::layout.html.twig" %}
+
+{% block header %}
+	Mes infos
+{% endblock %}
+
+{% block fos_user_content %}
+	{% include 'FOSUserBundle:Profile:show_content.html.twig' %}
+{% endblock %}
