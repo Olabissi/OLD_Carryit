@@ -1,0 +1,19 @@
+{% block subject %}Demande d'un nouveau mot de passe{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+Bonjour {{ user.username }} !
+
+Vous pouvez rentrer votre nouveau mot de passe en suivant le lien :
+
+{{ confirmationUrl }}
+
+Bien à vous,
+L'équipe Carryit
+www.carryit.net
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{# include 'AcmeDemoBundle:User:resetting_email.html.twig' #}
+{% endblock %}

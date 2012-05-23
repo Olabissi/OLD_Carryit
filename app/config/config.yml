@@ -62,13 +62,37 @@ jms_security_extra:
 fos_user:
     db_driver:     orm                        
     firewall_name: main                       
+    service:
+         mailer: fos_user.mailer.twig_swift
+
     # Permet de renseigner la nouvelle entité utilisateur
     user_class:    Cit\UserBundle\Entity\User 
-    # Permet de renseigner le nouveau formulaire d'inscription 
-    # registration:
-        # form:
-            # type: cit_user_registration
+
+    #paramètres envoi email
+    from_email:
+        address:        noreply@carryit.net
+        sender_name:    Carryit admin
+
     # Permet de renseigner le nouveau formulaire de profil 
     profile:
         form:
             type: cit_user_profile
+
+    # configuration envoi email pour resetting mot de passe
+    resetting:
+        email:
+            template: CitUserBundle:Resetting:resetting.email.twig
+            from_email:
+                address:        resetting@carryit.net
+                sender_name:    Carryit Password Resetting
+
+    # Permet d'activer la confirmation par email suite à une inscription
+    registration:
+        confirmation:
+            template: CitUserBundle:Registration:registration.email.twig
+            enabled: true
+            from_email:
+                address:        registration@carryit.net
+                sender_name:    Carryit Registration
+
+

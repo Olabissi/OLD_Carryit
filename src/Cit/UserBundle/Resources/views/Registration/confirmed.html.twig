@@ -1,13 +1,24 @@
-{% extends "CitUserBundle::layout.html.twig" %}
+{% extends "::layout.html.twig" %}
 
 {% block header %}
 	Confirmation d'inscription
 {% endblock %}
 
-{% block fos_user_content %}
+{% block body %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+    
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
     {% endif %}
-{% endblock fos_user_content %}
+
+	<br />
+
+    <div id = "btnlogin" class="btn">
+		<a href="{{ url('fos_user_security_login') }}">
+			connectez-vous
+			<br />
+		</a>
+	</div>
+	<br />
+{% endblock %}

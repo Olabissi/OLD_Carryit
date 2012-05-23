@@ -16,7 +16,7 @@ class VoyageType extends AbstractType
             ->add('heure_arrivee')
             ->add('nb_kg_disponibles')
             ->add('prix_par_kg')
-            ->add('compagnie_air')
+            ->add('compagnie_air','text',array('required' => false))
             //->add('user') 
         ;
     }

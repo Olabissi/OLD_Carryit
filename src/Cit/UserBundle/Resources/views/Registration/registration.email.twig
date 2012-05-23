@@ -1,0 +1,19 @@
+{% block subject %}Confirmation d'inscription{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+Bonjour {{ user.username }} !
+
+Merci de bien vouloir confirmer votre inscription sur Carryit en vous rendant sur le lien suivant :
+ 
+{{ confirmationUrl }}
+
+Bien à vous,
+L'équipe Carryit
+www.carryit.net
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+{#include 'MyAppMonBundle:User:registration_email.html.twig'#}
+{% endblock %}

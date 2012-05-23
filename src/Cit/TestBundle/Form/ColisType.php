@@ -15,10 +15,9 @@ class ColisType extends AbstractType
             ->add('date_livraison_souhaitee')
             ->add('ville_depart')
             ->add('ville_arrivee')
-            ->add('NomDestinataire')
-            ->add('TelephoneDestinataire')
-            ->add('complement_info')
-            //->add('user')
+            ->add('NomDestinataire','text',array('required' => false))
+            ->add('TelephoneDestinataire','text',array('required' => false))
+            ->add('complement_info','text',array('required' => false))
         ;
     }
 

@@ -9,5 +9,5 @@
     mailer_host="localhost"
     mailer_user=""
     mailer_password=""
-    locale="en"
+    locale="fr"
     secret="cef49674e5082f5090e7fd37749709bf519fd7a7"

@@ -60,21 +60,21 @@ class Colis
     /**
      * @var string $NomDestinataire
      *
-     * @ORM\Column(name="NomDestinataire", type="string", length=255)
+     * @ORM\Column(name="NomDestinataire", type="string", length=255, nullable="true")
      */
     private $NomDestinataire;
 
     /**
      * @var string $TelephoneDestinataire
      *
-     * @ORM\Column(name="TelephoneDestinataire", type="string", length=255)
+     * @ORM\Column(name="TelephoneDestinataire", type="string", length=255, nullable="true")
      */
     private $TelephoneDestinataire;
 
     /**
      * @var string $complement_info
      *
-     * @ORM\Column(name="complement_info", type="string", length=255)
+     * @ORM\Column(name="complement_info", type="string", length=255, nullable="true")
      */
     private $complement_info;
 

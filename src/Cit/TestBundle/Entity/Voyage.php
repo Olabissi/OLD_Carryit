@@ -67,7 +67,7 @@ class Voyage
     /**
      * @var string $compagnie_air
      *
-     * @ORM\Column(name="compagnie_air", type="string", length=255)
+     * @ORM\Column(name="compagnie_air", type="string", length=255, nullable="true")
      */
     private $compagnie_air;
 

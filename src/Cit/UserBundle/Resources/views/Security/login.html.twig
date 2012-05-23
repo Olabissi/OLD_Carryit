@@ -11,7 +11,8 @@
 {% block body %}
 
 	{% if error %}
-	    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+	    <div>{{ error|trans({}, 'CitUserBundle') }}</div>
+	    <br/>
 	{% endif %}
 
 	<form action="{{ path("fos_user_security_check") }}" method="post">

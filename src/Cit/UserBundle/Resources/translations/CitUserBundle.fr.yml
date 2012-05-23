@@ -1,1 +1,4 @@
-"Bad credentials": "Pseudo ou mot de passe incorrect"
+"The presented password is invalid." : "Le mot de passe est incorrect."
+"Bad credentials" : "L'identifiant est incorrect."
+"connected" : "vous êtes connecté"
+"fos_user_profile_form_user_username" : "identifiant"

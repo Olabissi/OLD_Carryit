@@ -1,9 +1,8 @@
 <div class="fos_user_user_show">
     <p>Utilisateur: {{ user.username }}</p>
     <p>email: {{ user.email }}</p>
-    <p>prenom : {{user.prenom }}</p>
-    <p>nom : {{user.nom }}</p>
-    <p>naissance le : {{user.datedenaissance|date('d-m-Y')}}</p>
-    <p>telephone : {{user.mobilephone }}</p>
-    <p>adresse : {{user.adresse }}</p>
+    <p>prenom : {{ user.prenom }}</p>
+    <p>nom : {{ user.nom }}</p>
+    <p>telephone : {{ user.mobilephone }}</p>
+    <p>departement de résidence : {{ user.adresse }}</p>
 </div>

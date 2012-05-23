@@ -61,6 +61,30 @@ class RegistrationController extends BaseController
     }
 
     /**
+     * Tell the user to check his email provider
+     */
+    public function checkEmailAction()
+    {
+        $email = $this->container->get('session')->get('fos_user_send_confirmation_email/email');
+        $this->container->get('session')->remove('fos_user_send_confirmation_email/email');
+        $user = $this->container->get('fos_user.user_manager')->findUserByEmail($email);
+
+        if (null === $user) {
+            throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
+        }
+
+        //calcul de l'erreur
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:checkEmail.html.twig', array(
+            'user' => $user,
+            'error' => $error,
+        ));
+    }
+
+    /**
      * Tell the user his account is now confirmed
      */
     public function confirmedAction()

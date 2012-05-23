@@ -1,0 +1,24 @@
+{% extends "CitUserBundle::layout.html.twig" %}
+
+{% block header %}
+	Suppression de Compte
+{% endblock %}
+
+{% block fos_user_content %}
+	Souhaitez-vous supprimer votre compte ?
+	<br/>
+	<br/>
+
+	{% include 'FOSUserBundle:Profile:show_content.html.twig' %}
+    
+    <form action="{{ path('CitUserBundle_deleteuseraccount', { 'id': user.id }) }}" method="post">
+        <p>
+            <br/>
+            <button type="submit">Supprimer</button>
+        </p>
+    </form>
+
+    <a href="{{ path('CitUserBundle_homepage') }}">
+        retour à mon profil
+    </a>
+{% endblock %}

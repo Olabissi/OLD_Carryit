@@ -14,4 +14,13 @@ CitUserBundle_changepwd:
     pattern:  /myaccount/changepwd
     defaults: { _controller: CitUserBundle:Default:changePwd }
 
+CitUserBundle_deletemyaccount:
+    pattern:  /myaccount/delete
+    defaults: { _controller: CitUserBundle:Default:deleteMyAccount }
+
+CitUserBundle_deleteuseraccount:
+    pattern:  /myaccount/{id}/deleteuser
+    defaults: { _controller: CitUserBundle:Default:deleteUser }
+    requirements: { _method: post }
+
 

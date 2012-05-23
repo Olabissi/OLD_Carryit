@@ -14,6 +14,17 @@
 {% endblock %}
 
 {% block body %}
+<div class="flash-notice">
+	{% if app.session.hasFlash('notice') %}
+	    <br/>
+	    <b> {{ app.session.flash('notice') }} </b>
+	{% endif %}
+	{% if app.session.hasFlash('fos_user_success') %}
+	    <br/>
+	    <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+	{% endif %}
+</div>
+
 <div id="article" class = "span7">
 	<h3 align = "center">Le Concept</h3>
 	<div id="explicationsvoyageur" class= "span3">

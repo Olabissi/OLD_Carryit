@@ -1,0 +1,13 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+	vérification de l'adresse email 
+{% endblock %}
+
+{% block header %}
+	votre inscription
+{% endblock %}
+
+{% block body %}
+	<p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
+{% endblock %}

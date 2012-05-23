@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Form\Model\CheckPassword;
 
 class DefaultController extends Controller
 {
@@ -32,14 +33,14 @@ class DefaultController extends Controller
         $session = $request->getSession();
         $error = $this->getError($request, $session);
         $form = $this->container->get('fos_user.profile.form');
-        //$form = $this->createForm(new ProfileFormType($current_user));
+        $form->setData(new CheckPassword($current_user));
 
         return $this->render('CitUserBundle:Profile:edit.html.twig', array(
                 'user' => $current_user,
                 'error' => $error,
                 'form' => $form->createView(),
                 'theme' => $this->container->getParameter('fos_user.template.theme'),
-                )
+                )   
         );
     }
 
@@ -60,16 +61,42 @@ class DefaultController extends Controller
                   ));
     }
 
-    protected function getUsernm()
+    public function deleteMyAccountAction()
     {
-        $current_user = $this->container->get('security.context')->getToken()->getUser();
+        $current_user = $this->getUserAndCheck();
 
-        if (!is_object($current_user)) {
-            throw new AccessDeniedException('This user does not have access to this section.');
+        //récupération de l'erreur pour le topmenu
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+        
+        return $this->render('CitUserBundle:Profile:delete.html.twig',
+            array('error' => $error, 'user' => $current_user));
+    }
+
+    public function deleteUserAction($id)
+    {
+        $current_user = $this->getUserAndCheck();
+        $id = $current_user->getId();
+        
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entityuser = $em->getRepository('CitUserBundle:User')->find($id);
+        if (!$entityuser) {
+            throw $this->createNotFoundException('entité utilisateur introuvable.');
         }
 
-        $name = $current_user->getUsername();
-        return $name;
+        $entitytrip = $em->getRepository('CitTestBundle:Voyage')->findBy(array('user' => $id));
+        $entitypacket = $em->getRepository('CitTestBundle:Colis')->findBy(array('user' => $id));
+        foreach ($entitytrip as $trip){ $em->remove($trip);}
+        foreach ($entitypacket as $packet){ $em->remove($packet);}
+        $em->remove($entityuser);
+    
+        $em->flush();
+
+        $this->get('session')->setFlash('notice', 'Votre compte a été supprimé!');
+        
+        return $this->redirect($this->generateUrl('CitTestBundle_homepage'));
     }
 
     protected function getUserAndCheck()
