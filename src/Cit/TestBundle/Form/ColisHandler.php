@@ -30,13 +30,34 @@ class ColisHandler
 
             if( $this->form->isValid() )
             {
-                $this->onSuccess($this->form->getData(), $current_user);
+                $packet = $this->form->getData();
+                
+                $departok = $this->em->getRepository('CitTestBundle:City')->isCity($packet->getVilleDepart());
+                if (!$departok)
+                {
+                    return 1;
+                }
+                $arriveeok = $this->em->getRepository('CitTestBundle:City')->isCity($packet->getVilleArrivee());
+                if (!$arriveeok)
+                {
+                    return 2;
+                }
+                if ($packet->getPoidsKg() <= 0)
+                {
+                    return 3;
+                }
+                if ('Sélectionnez une catégorie'== $packet->getCategorie() )
+                {
+                    return 4;
+                }
 
-                return true;
+                //appeler la fonction qui permet d'enregistrer le voyage dans la base de données
+                $this->onSuccess($packet, $current_user);
+                return 0;
             }
         }
 
-        return false;
+        return 6;
     }
 
     public function onSuccess(Colis $colis, User $user)

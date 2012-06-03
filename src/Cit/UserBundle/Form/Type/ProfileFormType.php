@@ -43,7 +43,7 @@ class ProfileFormType extends BaseType
         $builder->add('email','email');
 
         //On ajoute nos champs :
-        $builder->add('prenom','text',array('required' => false));
+        $builder->add('prenom','text',array('required' => false,'label' => 'prenom'));
         $builder->add('nom','text',array('required' => false));
         $builder->add('mobilephone','text');
         $builder->add('adresse','text');

@@ -3992,11 +3992,16 @@ a.thumbnail:hover {
 }
 
 /*----------------mes modifications ci-dessous----------------*/
-.flash-notice
+#notice
 {
   color :#009900;
+  font-weight:bold
 }
-
+#warning
+{
+  color :#ff9900;
+  font-weight:bold
+}
 #topmenu
 {
   background-color: #ff9900;
@@ -4217,4 +4222,19 @@ a.thumbnail:hover {
   position: relative;
   left:200px;
   bottom:120px;
+}
+ul.ui-autocomplete
+{ 
+  list-style:none;
+  border:1px solid #DDD;
+  width:210px;
+}
+ul.ui-autocomplete li
+{ 
+  background:white;
+  border-bottom:1px solid #DDD;
+}
+ul.ui-autocomplete li a
+{
+  text-decoration:none;
 }

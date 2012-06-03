@@ -4,6 +4,8 @@ namespace Cit\TestBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Cit\UserBundle\Entity\User;
+use Cit\TestBundle\Entity\City;
+use Cit\TestBundle\Entity\CityRepository;
 
 /**
  * Cit\TestBundle\Entity\Voyage
@@ -23,32 +25,32 @@ class Voyage
     private $id;
 
     /**
-     * @var string $aeroport_depart
+     * @var string $ville_depart
      *
-     * @ORM\Column(name="aeroport_depart", type="string", length=255)
+     * @ORM\Column(name="ville_depart", type="string", length=255)
      */
-    private $aeroport_depart;
+    private $ville_depart;
 
     /**
-     * @var string $aeroport_arrivee
+     * @var string $ville_arrivee
      *
-     * @ORM\Column(name="aeroport_arrivee", type="string", length=255)
+     * @ORM\Column(name="ville_arrivee", type="string", length=255)
      */
-    private $aeroport_arrivee;
+    private $ville_arrivee;
 
     /**
-     * @var datetime $heure_depart
+     * @var date $date_depart
      *
-     * @ORM\Column(name="heure_depart", type="datetime")
+     * @ORM\Column(name="date_depart", type="date")
      */
-    private $heure_depart;
+    private $date_depart;
 
     /**
-     * @var datetime $heure_arrivee
+     * @var date $date_arrivee
      *
-     * @ORM\Column(name="heure_arrivee", type="datetime")
+     * @ORM\Column(name="date_arrivee", type="date")
      */
-    private $heure_arrivee;
+    private $date_arrivee;
 
     /**
      * @var integer $nb_kg_disponibles
@@ -60,16 +62,30 @@ class Voyage
     /**
      * @var integer $prix_par_kg
      *
-     * @ORM\Column(name="prix_par_kg", type="integer")
+     * @ORM\Column(name="prix_par_kg", type="integer", nullable="true")
      */
     private $prix_par_kg;
-
+    
     /**
      * @var string $compagnie_air
      *
-     * @ORM\Column(name="compagnie_air", type="string", length=255, nullable="true")
+     * @ORM\Column(name="compagnie_air", type="string", length=100, nullable="true")
      */
     private $compagnie_air;
+
+    /**
+     * @var string $departure_airport
+     *
+     * @ORM\Column(name="departure_airport", type="string", length=100, nullable="true")
+     */
+    private $departure_airport;
+
+    /**
+     * @var string $arrival_airport
+     *
+     * @ORM\Column(name="arrival_airport", type="string", length=100, nullable="true")
+     */
+    private $arrival_airport;
 
     /**
      * @ORM\ManyToOne(targetEntity="Cit\UserBundle\Entity\User")
@@ -88,83 +104,83 @@ class Voyage
     }
 
     /**
-     * Set aeroport_depart
+     * Set ville_depart
      *
-     * @param string $aeroportDepart
+     * @param string $villeDepart
      */
-    public function setAeroportDepart($aeroportDepart)
+    public function setVilleDepart($villeDepart)
     {
-        $this->aeroport_depart = $aeroportDepart;
+        $this->ville_depart = $villeDepart;
     }
 
     /**
-     * Get aeroport_depart
+     * Get ville_depart
      *
      * @return string 
      */
-    public function getAeroportDepart()
+    public function getVilleDepart()
     {
-        return $this->aeroport_depart;
+        return $this->ville_depart;
     }
 
     /**
-     * Set aeroport_arrivee
+     * Set ville_arrivee
      *
-     * @param string $aeroportArrivee
+     * @param string $villeArrivee
      */
-    public function setAeroportArrivee($aeroportArrivee)
+    public function setVilleArrivee($villeArrivee)
     {
-        $this->aeroport_arrivee = $aeroportArrivee;
+        $this->ville_arrivee = $villeArrivee;
     }
 
     /**
-     * Get aeroport_arrivee
+     * Get ville_arrivee
      *
      * @return string 
      */
-    public function getAeroportArrivee()
+    public function getVilleArrivee()
     {
-        return $this->aeroport_arrivee;
+        return $this->ville_arrivee;
     }
 
     /**
-     * Set heure_depart
+     * Set date_depart
      *
-     * @param datetime $heureDepart
+     * @param date $dateDepart
      */
-    public function setHeureDepart($heureDepart)
+    public function setDateDepart($dateDepart)
     {
-        $this->heure_depart = $heureDepart;
+        $this->date_depart = $dateDepart;
     }
 
     /**
-     * Get heure_depart
+     * Get date_depart
      *
-     * @return datetime 
+     * @return date 
      */
-    public function getHeureDepart()
+    public function getDateDepart()
     {
-        return $this->heure_depart;
+        return $this->date_depart;
     }
 
     /**
-     * Set heure_arrivee
+     * Set date_arrivee
      *
-     * @param datetime $heureArrivee
+     * @param date $dateArrivee
      */
-    public function setHeureArrivee($heureArrivee)
+    public function setDateArrivee($dateArrivee)
     {
-        $this->heure_arrivee = $heureArrivee;
+        $this->date_arrivee = $dateArrivee;
     }
 
     /**
-     * Get heure_arrivee
+     * Get date_arrivee
      *
-     * @return datetime 
+     * @return date 
      */
-    public function getHeureArrivee()
+    public function getDateArrivee()
     {
-        return $this->heure_arrivee;
+        return $this->date_arrivee;
     }
 
     /**
@@ -227,6 +243,46 @@ class Voyage
         return $this->compagnie_air;
     }
 
+    /**
+     * Set departure_airport
+     *
+     * @param string $departureAirport
+     */
+    public function setDepartureAirport($departureAirport)
+    {
+        $this->departure_airport = $departureAirport;
+    }
+
+    /**
+     * Get departure_airport
+     *
+     * @return string 
+     */
+    public function getDepartureAirport()
+    {
+        return $this->departure_airport;
+    }
+
+    /**
+     * Set arrival_airport
+     *
+     * @param string $arrivalAirport
+     */
+    public function setArrivalAirport($arrivalAirport)
+    {
+        $this->arrival_airport = $arrivalAirport;
+    }
+
+    /**
+     * Get arrival_airport
+     *
+     * @return string 
+     */
+    public function getArrivalAirport()
+    {
+        return $this->arrival_airport;
+    }
+
     public function getUser()
     {
         return $this->user;
@@ -236,6 +292,10 @@ class Voyage
     public function setUser(User $user)
     {
         $this->user = $user;
+    }
 
+    public function isDatesValid()
+    {
+        return ($this->getDateDepart() <= $this->getDateArrivee());
     }
 }

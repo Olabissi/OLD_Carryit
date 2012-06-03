@@ -1,0 +1,15 @@
+<div id = "searchtravel" class = "span10">
+	<form action="{{ path("CitTestBundle_seeTripsOrPackets") }}" method="post">
+	    <div>
+		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+		    <input type="text" class="city" id="villedepart" name="_depart" value="ville de départ" 
+		    onclick="_depart.value='';" required="required"/>
+		    <input type="text" class="city" id="villearrivee" name="_arrivee" value="ville d'arrivée" 
+		    onclick="_arrivee.value='';" required="required"/>
+		    <input type="submit" id="_submit" name="_submit" value="rechercher un colis" />
+		    <input type="submit" id="_submit" name="_submit" value="rechercher un voyageur" />
+	    </div>
+	</form>
+</div>
+
+

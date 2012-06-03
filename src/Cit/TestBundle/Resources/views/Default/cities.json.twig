@@ -1,0 +1,6 @@
+{# génère le tableau format JSON qui va être récupéré par la fonction javascript autocomplete #}
+[
+{% for value in tableau %}
+"{{value.frenchname}}"{% if not loop.last %}, {% endif %}
+{% endfor %}
+]

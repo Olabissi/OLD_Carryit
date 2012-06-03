@@ -23,27 +23,6 @@ class Colis
     private $id;
 
     /**
-     * @var string $Categorie
-     *
-     * @ORM\Column(name="Categorie", type="string", length=255)
-     */
-    private $Categorie;
-
-    /**
-     * @var integer $Poids_kg
-     *
-     * @ORM\Column(name="Poids_kg", type="integer")
-     */
-    private $Poids_kg;
-
-    /**
-     * @var date $date_livraison_souhaitee
-     *
-     * @ORM\Column(name="date_livraison_souhaitee", type="date")
-     */
-    private $date_livraison_souhaitee;
-
-    /**
      * @var string $ville_depart
      *
      * @ORM\Column(name="ville_depart", type="string", length=255)
@@ -56,18 +35,39 @@ class Colis
      * @ORM\Column(name="ville_arrivee", type="string", length=255)
      */
     private $ville_arrivee;
+    
+    /**
+     * @var integer $Poids_kg
+     *
+     * @ORM\Column(name="Poids_kg", type="integer")
+     */
+    private $Poids_kg;
+
+    /**
+     * @var string $Categorie
+     *
+     * @ORM\Column(name="Categorie", type="string", length=255)
+     */
+    private $Categorie;
+
+    /**
+     * @var date $date_livraison_souhaitee
+     *
+     * @ORM\Column(name="date_livraison_souhaitee", type="date")
+     */
+    private $date_livraison_souhaitee;
 
     /**
      * @var string $NomDestinataire
      *
-     * @ORM\Column(name="NomDestinataire", type="string", length=255, nullable="true")
+     * @ORM\Column(name="NomDestinataire", type="string", length=100, nullable="true")
      */
     private $NomDestinataire;
 
     /**
      * @var string $TelephoneDestinataire
      *
-     * @ORM\Column(name="TelephoneDestinataire", type="string", length=255, nullable="true")
+     * @ORM\Column(name="TelephoneDestinataire", type="string", length=20, nullable="true")
      */
     private $TelephoneDestinataire;
 

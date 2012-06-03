@@ -1,0 +1,99 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Carryit - Recherche de Voyages
+{% endblock %}
+
+{% block topmenu %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% include 'CitUserBundle:Security:login_nude.html.twig' with {'error': error, 'name': name} %}
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    Trouver un voyageur de {{depart}} vers {{arrivee}} 
+{% endblock %}
+
+{% block body %}
+	<div>
+		{% if 0 == number %}	
+		    Nous sommes désolés, aucun résultat trouvé dans l'immédiat ne répond à votre demande.
+		    <br/>
+            <br/>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                Nous vous invitons à enregistrer le colis que vous souhaitez envoyer : 
+                <a href="{{ url('CitTestBundle_addpacketpage') }}">
+                    proposer un colis
+                </a>
+                <br/>
+    			Vous pourrez alors être contacté par un voyageur qui serait intéressé pour 
+                transporter votre colis pour vous.
+    			<br/>
+                <br/>
+    			Sinon, vous pouvez d'ores et déjà accéder au service sérénité.
+                <br/>L'équipe CARRY IT se chargera alors de faire parvenir 
+                votre colis à destination dans les meilleurs délais.
+            {% else %}
+                Nous vous invitons à vous inscrire : 
+                <a href="{{ url('fos_user_registration_register') }}">
+                    Inscription
+                </a>
+                <br/>
+                Vous pourrez alors enregistrer le colis que vous souhaitez envoyer : 
+                <a href="{{ url('CitTestBundle_addpacketpage') }}">
+                    proposer un colis
+                </a>, 
+                <br/>
+                et être contacté par un voyageur qui serait intéressé pour 
+                transporter votre colis pour vous.
+                <br/>
+                <br/>
+                Sinon, vous pouvez d'ores et déjà accéder au service sérénité. 
+                <br/>L'équipe CARRY IT se chargera alors de faire parvenir 
+                votre colis à destination dans les meilleurs délais.
+            {% endif %}
+		{% elseif 1 == number %}
+			{{number}} résultat trouvé
+		{% else %}
+			{{number}} résultats trouvés
+		{% endif %}
+	</div>
+	<div>
+        {% if 0 != number %}
+		<table class="table">
+            <thead>
+                <tr>
+                    <th>Voyageur</th>
+                    <th>Voyage</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in result %}
+                <tr>
+                	<td>
+                		{{ entity.user }}
+                		<br/>email: {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}{{ entity.user.email }}
+                        {% else %} <a href="{{ url('fos_user_registration_register') }}"> Inscrivez-vous </a>
+                        {% endif %}
+                		<br/>numéro de téléphone: {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {{ entity.user.mobilephone }}{% else %}<a href="{{ url('fos_user_registration_register') }}"> Inscrivez-vous </a>{% endif %}
+                		<br/>{% if entity.user.nom %} nom: {{ entity.user.nom }} <br/> {% endif %}
+                        {% if entity.user.prenom %} prénom: {{ entity.user.prenom }} <br/> {% endif %}
+                	</td>
+                    <td>
+        	            {{ entity.villedepart }} vers {{ entity.villearrivee }}
+        	            <br /> départ le {{ entity.datedepart|date('d-m-Y') }}
+        	            <br /> arrivée le {{ entity.datearrivee|date('d-m-Y') }}
+        	            <br /> {{ entity.nbkgdisponibles }} kilos proposés
+                        {% if null != entity.prixparkg %}, à {{ entity.prixparkg }} € le kilo {% endif %}
+                        <br /> {% if entity.departureairport %} départ de {{ entity.departureairport }}  {% endif %}
+                        {% if entity.arrivalairport %} vers {{ entity.arrivalairport }}  {% endif %} 
+                        <br /> {% if entity.compagnieair %} compagnie aérienne: {{ entity.compagnieair }} {% endif %} 
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+	    </table>
+        {% endif %}
+	</div>	
+{% endblock %}

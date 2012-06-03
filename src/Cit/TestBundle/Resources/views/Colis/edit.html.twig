@@ -9,11 +9,26 @@
 {% endblock %}
 
 {% block body %}
-	{% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
-        <b>{{ app.session.flash('notice') }}</b>
-    </div>
-	{% endif %}
+	<div class="flash">
+		{% if app.session.hasFlash('notice') %}
+		    <div id="notice">
+			    <br/>
+			    <b> {{ app.session.flash('notice') }} </b>
+			</div>
+		{% endif %}
+		{% if app.session.hasFlash('fos_user_success') %}
+		    <div id="notice">
+			    <br/>
+			    <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+		    </div>
+		{% endif %}
+		{% if app.session.hasFlash('warning') %}
+			<div id="warning">
+			    <br/>
+			    <b> {{ app.session.flash('warning') }} </b>
+			</div>
+		{% endif %}
+	</div>
 
 	<form action="{{ path('CitTestBundle_updateuserpacket', { 'id': entity.id }) }}" 
 	method="post" {{ form_enctype(edit_form) }}>
@@ -26,4 +41,11 @@
 	<a href="{{ path('CitTestBundle_useractivitypage') }}">
 	    retour à la liste
 	</a>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-1.7.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-ui-1.8.20.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/CitiesAutocompletion.js') }}"></script>
 {% endblock %}

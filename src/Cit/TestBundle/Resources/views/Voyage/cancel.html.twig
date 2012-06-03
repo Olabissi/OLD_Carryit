@@ -9,20 +9,34 @@
 {% endblock %}
 
 {% block body %}
-    {% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
-        <b>{{ app.session.flash('notice') }}</b>
+    <div class="flash">
+        {% if app.session.hasFlash('notice') %}
+            <div id="notice">
+                <br/>
+                <b> {{ app.session.flash('notice') }} </b>
+            </div>
+        {% endif %}
+        {% if app.session.hasFlash('fos_user_success') %}
+            <div id="notice">
+                <br/>
+                <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+            </div>
+        {% endif %}
+        {% if app.session.hasFlash('warning') %}
+            <div id="warning">
+                <br/>
+                <b> {{ app.session.flash('warning') }} </b>
+            </div>
+        {% endif %}
     </div>
-    {% endif %}
      
     <div>
         <h4>Souhaitez-vous supprimer ce voyage ?</h4>
     </div> 
 
     <div>
-        Voyage de {{ entity.aeroportdepart }} vers {{ entity.aeroportarrivee }}
-        <br /> départ le {{ entity.heuredepart|date('d-m-Y') }} à {{ entity.heuredepart|date('H:i') }},
-        arrivée le {{ entity.heurearrivee|date('d-m-Y') }} à {{ entity.heurearrivee|date('H:i') }}
+        Voyage de {{ entity.villedepart }} vers {{ entity.villearrivee }}
+        <br /> départ le {{ entity.datedepart|date('d-m-Y') }}, arrivée le {{ entity.datearrivee|date('d-m-Y') }}
         <br /> via {{ entity.compagnieair }}
         <br /> {{ entity.nbkgdisponibles }} kilos proposés, à {{ entity.prixparkg }} € le kilo
         <br />

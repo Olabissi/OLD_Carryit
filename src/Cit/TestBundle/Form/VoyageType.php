@@ -4,20 +4,49 @@ namespace Cit\TestBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Cit\TestBundle\Entity\City;
 
 class VoyageType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('aeroport_depart')
-            ->add('aeroport_arrivee')
-            ->add('heure_depart')
-            ->add('heure_arrivee')
-            ->add('nb_kg_disponibles')
-            ->add('prix_par_kg')
-            ->add('compagnie_air','text',array('required' => false))
-            //->add('user') 
+            ->add('ville_depart', 'text', array(
+                'label' => 'ville de départ',
+                'attr' => array(
+                    'class' => 'city'),
+                ))
+
+            ->add('departure_airport','text',array(
+                'required' => false,
+                'label' => 'aéroport de depart'))
+
+            ->add('ville_arrivee', 'text', array(
+                'label' => 'ville d\'arrivée',
+                'attr' => array(
+                    'class' => 'city'),
+                ))
+
+            ->add('arrival_airport','text',array(
+                'required' => false,
+                'label' => 'aéroport d\'arrivée'))
+
+            ->add('date_depart','date',array(
+                'label' => 'date de départ'))
+
+            ->add('date_arrivee','date',array(
+                'label' => 'date d\'arrivée'))
+
+            ->add('nb_kg_disponibles','integer',array(
+                'label' => 'nombre de kilos disponibles'))
+
+            ->add('prix_par_kg','integer',array(
+                'label' => 'prix proposé(en € par kilo)',
+                'required' => false))
+
+            ->add('compagnie_air','text',array(
+                'label' => 'compagnie aérienne',
+                'required' => false))
         ;
     }
 

@@ -70,5 +70,22 @@ CitTestBundle_deleteuserpacket:
     defaults: { _controller: CitTestBundle:Default:deletePacket }
     requirements: { _method: post }
 
+CitTestBundle_findtrip:
+    pattern:  /useractivity/{id}/findtrip
+    defaults: { _controller: CitTestBundle:Default:findTrip }
+
+CitTestBundle_findpacket:
+    pattern:  /useractivity/{id}/findpacket
+    defaults: { _controller: CitTestBundle:Default:findPacket }
+
+CitTestBundle_getCities:
+    pattern:  /searchCity
+    defaults: { _controller: CitTestBundle:Default:getCities }
+
+CitTestBundle_seeTripsOrPackets:
+    pattern:  /seetripsorpackets
+    defaults: { _controller: CitTestBundle:Default:seeTripsOrPackets }
+    requirements: { _method: post }
+
 
 

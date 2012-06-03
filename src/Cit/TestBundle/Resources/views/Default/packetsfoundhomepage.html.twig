@@ -1,0 +1,95 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Carryit - Recherche de Colis
+{% endblock %}
+
+{% block topmenu %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% include 'CitUserBundle:Security:login_nude.html.twig' with {'error': error, 'name': name} %}
+    {% endif %}
+{% endblock %}
+
+{% block header %}
+    Trouver un colis à transporter de {{depart}} vers {{arrivee}} 
+{% endblock %}
+
+{% block body %}
+	<div>
+		{% if 0 == number %}	
+		    Nous sommes désolés, aucun résultat trouvé dans l'immédiat ne répond à votre demande.
+		    <br/>
+            <br/>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                Nous vous invitons à enregistrer le voyage que vous allez effectuer : 
+                <a href="{{ url('CitTestBundle_addtrippage') }}">
+                    proposer un voyage
+                </a>
+                <br/>
+    			Vous pourrez alors être contacté par un expéditeur qui serait intéressé pour 
+                que vous transportiez son colis.
+    			<br/>
+            {% else %}
+                Nous vous invitons à vous inscrire : 
+                <a href="{{ url('fos_user_registration_register') }}">
+                    Inscription
+                </a>
+                <br/>
+                Vous pourrez alors enregistrer le voyage que vous allez effectuer : 
+                <a href="{{ url('CitTestBundle_addtrippage') }}">
+                    proposer un voyage
+                </a>, 
+                <br/>
+                et être contacté par un expéditeur qui serait intéressé pour 
+                que vous transportiez son colis.
+                <br/>
+            {% endif %}
+		{% elseif 1 == number %}
+			{{number}} résultat trouvé
+		{% else %}
+			{{number}} résultats trouvés
+		{% endif %}
+	</div>
+	<div>
+        {% if 0 != number %}
+		<table class="table">
+            <thead>
+                <tr>
+                    <th>Expéditeur</th>
+                    <th>Colis</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in result %}
+                <tr>
+                	<td>
+                		{{ entity.user }}
+                		<br/>email: {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}{{ entity.user.email }}
+                        {% else %} <a href="{{ url('fos_user_registration_register') }}"> Inscrivez-vous </a>
+                        {% endif %}
+                		<br/>numéro de téléphone: {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {{ entity.user.mobilephone }}{% else %}<a href="{{ url('fos_user_registration_register') }}"> Inscrivez-vous </a>{% endif %}
+                		<br/>{% if entity.user.nom %} nom: {{ entity.user.nom }} <br/> {% endif %}
+                        {% if entity.user.prenom %} prénom: {{ entity.user.prenom }} <br/> {% endif %}
+                	</td>
+                    <td>
+        	            {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
+                        vers {{ entity.villearrivee }}
+
+                        <br /> catégorie du contenu : {{ entity.Categorie }}
+
+                        <br /> date de livraison souhaitée : 
+                        {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
+
+                        {% if entity.NomDestinataire %} destinataire : {{ entity.NomDestinataire }} {% endif %}
+                        {% if entity.TelephoneDestinataire %}- phone: {{ entity.TelephoneDestinataire }} <br /> {% endif%}
+
+                        {% if entity.complementinfo %}infos complémentaires : {{ entity.complementinfo }} <br /> {% endif%}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+	    </table>
+        {% endif %}
+	</div>	
+{% endblock %}

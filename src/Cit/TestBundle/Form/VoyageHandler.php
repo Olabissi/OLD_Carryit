@@ -30,14 +30,38 @@ class VoyageHandler
 
             if( $this->form->isValid() )
             {
-                //appeler la fonction qui permet d'enregistrer le voyage dans la base de données
-                $this->onSuccess($this->form->getData(), $current_user);
+                $trip = $this->form->getData();
+                
+                $departok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleDepart());
+                $arriveeok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleArrivee());
+                if (!$departok)
+                {
+                    return 1;
+                }
+                if (!$arriveeok)
+                {
+                    return 2;
+                }
+                if ($trip->getDateDepart() > $trip->getDateArrivee())
+                {
+                    return 3;
+                }
+                if ($trip->getNbKgDisponibles() <= 0)
+                {
+                    return 4;
+                }
+                if ($trip->getPrixParKg() < 0)
+                {
+                    return 5;
+                }
 
-                return true;
+                //appeler la fonction qui permet d'enregistrer le voyage dans la base de données
+                $this->onSuccess($trip, $current_user);
+                return 0;
             }
         }
 
-        return false;
+        return 6;
     }
 
     public function onSuccess(Voyage $voyage, User $user)

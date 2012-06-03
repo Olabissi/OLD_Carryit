@@ -10,19 +10,33 @@
 {% endblock %}
 
 {% block header %}
-    Accueil
+    Bienvenue
 {% endblock %}
 
 {% block body %}
-<div class="flash-notice">
+<div class="flash">
 	{% if app.session.hasFlash('notice') %}
-	    <br/>
-	    <b> {{ app.session.flash('notice') }} </b>
+	    <div id="notice">
+		    <br/>
+		    <b> {{ app.session.flash('notice') }} </b>
+		</div>
 	{% endif %}
 	{% if app.session.hasFlash('fos_user_success') %}
-	    <br/>
-	    <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+	    <div id="notice">
+		    <br/>
+		    <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+	    </div>
 	{% endif %}
+	{% if app.session.hasFlash('warning') %}
+		<div id="warning">
+		    <br/>
+		    <b> {{ app.session.flash('warning') }} </b>
+		</div>
+	{% endif %}
+</div>
+
+<div>
+	{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
 </div>
 
 <div id="article" class = "span7">
@@ -114,6 +128,13 @@
 	</div>
 {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-1.7.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-ui-1.8.20.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/CitiesAutocompletion.js') }}"></script>
 {% endblock %}
 	
 		
