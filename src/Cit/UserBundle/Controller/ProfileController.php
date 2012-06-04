@@ -48,16 +48,34 @@ class ProfileController extends BaseController
         $session = $request->getSession();
         $error = $this->getError($request, $session);
 
-        //$form = $this->createForm(new ProfileFormType($user));
         $form = $this->container->get('fos_user.profile.form');
-        $formHandler = $this->container->get('fos_user.profile.form.handler');
-		
+		$formHandler = $this->container->get('fos_user.profile.form.handler');
+
+        // On éxécute le handler pour le formulaire d'édition de profil. S'il retourne 0, le profil a bien été modifié
         $process = $formHandler->process($user);
-        if ($process) {
+        if (0 == $process) 
+        {
+            $this->container->get('session')->clearFlashes();
             $this->setFlash('fos_user_success', 'profile.flash.updated');
 
             return $this->container->get('templating')->renderResponse('FOSUserBundle:Profile:show.html.twig',
     		array('user' => $user,'error' => $error));
+        }
+        elseif (1 == $process)
+        {
+            $this->setFlash('warning', 'le nom d\'utilisateur ne doit pas dépasser 30 caractères');
+        }
+        elseif (2 == $process)
+        {
+            $this->setFlash('warning', 'le numéro de téléphone ne doit pas dépasser 20 caractères');
+        }
+        elseif (3 == $process)
+        {
+            $this->setFlash('warning', 'le nom ne doit pas dépasser 100 caractères');
+        }
+        elseif (4 == $process)
+        {
+            $this->setFlash('warning', 'le prénom ne doit pas dépasser 100 caractères');
         }
 
         return $this->container->get('templating')->renderResponse(

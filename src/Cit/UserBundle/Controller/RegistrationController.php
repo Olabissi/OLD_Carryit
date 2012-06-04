@@ -37,7 +37,7 @@ class RegistrationController extends BaseController
         $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
 
         $process = $formHandler->process($confirmationEnabled);
-        if ($process) {
+        if (0 == $process) {
             $user = $form->getData();
 
             if ($confirmationEnabled) {
@@ -48,10 +48,15 @@ class RegistrationController extends BaseController
                 $route = 'fos_user_registration_confirmed';
             }
 
+            $this->container->get('session')->clearFlashes();
             $this->setFlash('fos_user_success', 'registration.flash.user_created');
             $url = $this->container->get('router')->generate($route);
 
             return new RedirectResponse($url);
+        }
+        elseif (1 == $process)
+        {
+            $this->setFlash('warning', 'le nom d\'utilisateur de noit pas dépasser 30 caractères ');
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.twig', array(

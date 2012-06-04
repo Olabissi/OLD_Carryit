@@ -34,14 +34,14 @@ class User extends BaseUser
     /**
      * @var string $prenom
      *
-     * @ORM\Column(name="prenom", type="string", length=255, nullable = true)
+     * @ORM\Column(name="prenom", type="string", length=100, nullable = true)
      */
     private $prenom;
 
     /**
      * @var string $nom
      *
-     * @ORM\Column(name="nom", type="string", length=255, nullable = true)
+     * @ORM\Column(name="nom", type="string", length=100, nullable = true)
      */
     private $nom;
 
@@ -55,7 +55,7 @@ class User extends BaseUser
     /**
      * @var string $mobilephone
      *
-     * @ORM\Column(name="mobilephone", type="string", length=10, nullable = true)
+     * @ORM\Column(name="mobilephone", type="string", length=20, nullable = true)
      */
     private $mobilephone;
 

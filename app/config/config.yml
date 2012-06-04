@@ -77,6 +77,7 @@ fos_user:
     profile:
         form:
             type: cit_user_profile
+            handler: cit_user.form.handler.profile
 
     # configuration envoi email pour resetting mot de passe
     resetting:
@@ -94,5 +95,7 @@ fos_user:
             from_email:
                 address:        registration@carryit.net
                 sender_name:    Carryit Registration
+        form:
+            handler: cit_user.form.handler.registration
 
 

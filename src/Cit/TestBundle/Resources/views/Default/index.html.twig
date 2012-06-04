@@ -17,20 +17,17 @@
 <div class="flash">
 	{% if app.session.hasFlash('notice') %}
 	    <div id="notice">
-		    <br/>
-		    <b> {{ app.session.flash('notice') }} </b>
+		    <br/>{{ app.session.flash('notice') }}
 		</div>
 	{% endif %}
 	{% if app.session.hasFlash('fos_user_success') %}
 	    <div id="notice">
-		    <br/>
-		    <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
+		    <br/>{{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }}
 	    </div>
 	{% endif %}
 	{% if app.session.hasFlash('warning') %}
 		<div id="warning">
-		    <br/>
-		    <b> {{ app.session.flash('warning') }} </b>
+		    <br/>{{ app.session.flash('warning') }}
 		</div>
 	{% endif %}
 </div>
@@ -122,7 +119,7 @@
 	<div id="signup" class = "span4">
 		<h4 style="font-weight:bold;">Pas encore inscrit ? Rejoignez-nous !</h4>
 		<br/>
-		{% include 'CitUserBundle:Registration:register_nude.html.twig' with 
+		{% include 'CitUserBundle:Registration:register_content.html.twig' with 
 		{'theme': theme, 'form': userform} %}
 		<br />
 	</div>

@@ -17,11 +17,19 @@
 {% endblock %}
 
 {% block body %}
-{# On y place le contenu du layout par défaut de FOSUB : https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/views/layout.html.twig #}
+{# On y place le contenu du layout par défaut de FOSUB : https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/views/layout.html.twig #}    
 
     {% for key, message in app.session.getFlashes() %}
     <div class="{{ key }}">
-        {{ message|trans({}, 'FOSUserBundle') }}
+        {% if 'warning' == key %}
+        <div id="warning">
+            {{ message }}
+        </div>
+        {% else %}
+        <div id="notice">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
 

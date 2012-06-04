@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block body %}
+	{% for key, message in app.session.getFlashes() %}
+    <div class="{{ key }}">
+        {% if 'warning' == key %}
+        <div id="warning">
+            {{ message }}
+        </div>
+        {% else %}
+        <div id="notice">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
 	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
 {% endblock %}

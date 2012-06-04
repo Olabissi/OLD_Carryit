@@ -28,6 +28,7 @@ class DefaultController extends Controller
 
     public function editInfosAction()
     {
+        $this->container->get('session')->setFlash('fos_user_success', '');
         $current_user = $this->getUserAndCheck();
         $request = $this->container->get('request');
         $session = $request->getSession();

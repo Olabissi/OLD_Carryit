@@ -5,6 +5,18 @@ services:
         tags: 
             -  { name: form.type, alias: cit_user_profile }
 
+    cit_user.form.handler.profile:
+        arguments: ["@fos_user.profile.form", "@request", "@fos_user.user_manager"]
+        class: Cit\UserBundle\Form\Handler\ProfileFormHandler
+        scope: request
+        public: false
+
+    cit_user.form.handler.registration:
+        arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer"]
+        class: Cit\UserBundle\Form\Handler\RegistrationFormHandler
+        scope: request
+        public: false
+
     #cit_user_registration: 
         #arguments: [%fos_user.model.user.class%]
         #class: Cit\UserBundle\Form\Type\RegistrationFormType 
