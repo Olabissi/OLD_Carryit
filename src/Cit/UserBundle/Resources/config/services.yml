@@ -17,6 +17,12 @@ services:
         scope: request
         public: false
 
+    cit_user.form.handler.change_password:
+        arguments: ["@fos_user.change_password.form", "@request", "@fos_user.user_manager"]
+        class: Cit\UserBundle\Form\Handler\ChangePasswordFormHandler
+        scope: request
+        public: false
+
     #cit_user_registration: 
         #arguments: [%fos_user.model.user.class%]
         #class: Cit\UserBundle\Form\Type\RegistrationFormType 

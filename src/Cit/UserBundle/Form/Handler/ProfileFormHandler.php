@@ -29,36 +29,49 @@ class ProfileFormHandler extends BaseHandler
 
             if ($this->form->isValid()) 
             {
-                if (30 < strlen($user->getUsername()))
+                $result = 0;
+
+                if (3 > strlen($user->getUsername()))
                 {
-                    return 1;
+                    $result = 1;
+                }
+                elseif (30 < strlen($user->getUsername()))
+                {
+                    $result = 2;
+                }
+                elseif (8 > strlen($user->getMobilephone()) and 0 !=  strlen($user->getMobilephone()))
+                {
+                    $result = 3;
+                }
+                elseif (20 < strlen($user->getMobilephone()))
+                {
+                    $result = 4;
+                }
+                elseif (100 < strlen($user->getNom()))
+                {
+                    $result = 5;
+                }
+                elseif (100 < strlen($user->getPrenom()))
+                {
+                    $result = 6;
                 }
 
-                if (20 < strlen($user->getMobilephone()))
+                if (0 != $result)
                 {
-                    return 2;
+                    // Reloads the user to reset its username. This is needed when the
+                    // username or password have been changed to avoid issues with the
+                    // security layer.
+                    $this->userManager->reloadUser($user);
                 }
-
-                if (100 < strlen($user->getNom()))
+                else 
                 {
-                    return 3;
+                    $this->onSuccess($user);
                 }
-
-                if (100 < strlen($user->getPrenom()))
-                {
-                    return 4;
-                }
-
-                $this->onSuccess($user);
-                return 0;
+                
+                return $result;
             }
-
-            // Reloads the user to reset its username. This is needed when the
-            // username or password have been changed to avoid issues with the
-            // security layer.
-            $this->userManager->reloadUser($user);
         }
 
-        return 10;
+        return 50;
     }
 }

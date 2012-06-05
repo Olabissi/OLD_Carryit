@@ -79,6 +79,11 @@ fos_user:
             type: cit_user_profile
             handler: cit_user.form.handler.profile
 
+    # Permet de changer le mot de passe d'un utilisateur 
+    change_password:
+        form:
+            handler: cit_user.form.handler.change_password
+
     # configuration envoi email pour resetting mot de passe
     resetting:
         email:

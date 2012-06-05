@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Cit\TestBundle\CitTestBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Cit\UserBundle\CitUserBundle(),
-            new Cit\AccountBundle\CitAccountBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

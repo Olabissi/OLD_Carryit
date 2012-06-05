@@ -34,6 +34,16 @@ class RegistrationFormHandler extends BaseHandler
                 {
                     return 1;
                 }
+                
+                if (3 > strlen($user->getUsername()))
+                {
+                    return 2;
+                }
+
+                if (5 > strlen($user->getPlainPassword()))
+                {
+                    return 3;
+                }
 
                 $this->onSuccess($user, $confirmation);
                 return 0;

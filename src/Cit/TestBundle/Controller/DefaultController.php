@@ -797,13 +797,21 @@ class DefaultController extends Controller
         }
         elseif ( 3 == $number )
         {
-            $msg = 'la date d\'arrivée ne doit pas être antérieure à la date de départ.';
+            $msg = 'la date de départ ne doit pas être déjà passée. Choisissez la date d\'aujourd\'hui ou une date dans le futur.';
         }
         elseif ( 4 == $number )
         {
-            $msg = 'le nombre de kilogrammes disponibles doit être supérieur à 0.';
+            $msg = 'la date d\'arrivée ne doit pas être antérieure à la date de départ.';
         }
         elseif ( 5 == $number )
+        {
+            $msg = 'le nombre de kilogrammes disponibles doit être supérieur à 0.';
+        }
+        elseif ( 6 == $number )
+        {
+            $msg = 'Trop de kilogrammes disponibles. Le nombre maximum de kilos disponibles est 50.';
+        }
+        elseif ( 7 == $number )
         {
             $msg = 'le prix proposé (en € par kilo) ne doit pas être inférieur à 0.';
         }

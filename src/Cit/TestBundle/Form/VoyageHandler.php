@@ -32,8 +32,15 @@ class VoyageHandler
             {
                 $trip = $this->form->getData();
                 
+                if ($this->alreadyExists($trip))
+                {
+                    return 8;
+                }
+                
                 $departok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleDepart());
                 $arriveeok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleArrivee());
+                $aujdui = date('Ymd');
+
                 if (!$departok)
                 {
                     return 1;
@@ -42,17 +49,25 @@ class VoyageHandler
                 {
                     return 2;
                 }
-                if ($trip->getDateDepart() > $trip->getDateArrivee())
+                if ($aujdui > $trip->getDateDepart()->format('Ymd'))
                 {
                     return 3;
                 }
-                if ($trip->getNbKgDisponibles() <= 0)
+                if ($trip->getDateDepart() > $trip->getDateArrivee())
                 {
                     return 4;
                 }
-                if ($trip->getPrixParKg() < 0)
+                if (0 > $trip->getNbKgDisponibles())
                 {
                     return 5;
+                }
+                if (50 < $trip->getNbKgDisponibles())
+                {
+                    return 6;
+                }
+                if ($trip->getPrixParKg() < 0)
+                {
+                    return 7;
                 }
 
                 //appeler la fonction qui permet d'enregistrer le voyage dans la base de données
@@ -61,7 +76,7 @@ class VoyageHandler
             }
         }
 
-        return 6;
+        return 50;
     }
 
     public function onSuccess(Voyage $voyage, User $user)
@@ -69,5 +84,11 @@ class VoyageHandler
         $voyage->setUser($user);
         $this->em->persist($voyage);
         $this->em->flush();
+    }
+
+    protected function alreadyExists(Voyage $voyage)
+    {
+        var_dump($voyage->getUser());exit;
+        return false;
     }
 }

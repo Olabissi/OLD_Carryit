@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Cit\UserBundle\Entity\User;
 use Cit\UserBundle\Form\Type\ProfileFormType;
 use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Form\Model\CheckPassword;
 use FOS\UserBundle\Controller\ProfileController as BaseController;
 
 class ProfileController extends BaseController
@@ -48,6 +49,9 @@ class ProfileController extends BaseController
         $session = $request->getSession();
         $error = $this->getError($request, $session);
 
+        //on récupère l'ancien email
+        $email = $user->getEmail();
+
         $form = $this->container->get('fos_user.profile.form');
 		$formHandler = $this->container->get('fos_user.profile.form.handler');
 
@@ -55,6 +59,14 @@ class ProfileController extends BaseController
         $process = $formHandler->process($user);
         if (0 == $process) 
         {
+            $temp = $user;
+            $form->setData(new CheckPassword($temp));
+            if ($temp->getEmail() != $email)
+            {
+                //l'adresse email a été modifiée. 
+                //Il faut envoyer un email à la nouvelle adresse pour la valider
+            }
+
             $this->container->get('session')->clearFlashes();
             $this->setFlash('fos_user_success', 'profile.flash.updated');
 
@@ -63,17 +75,25 @@ class ProfileController extends BaseController
         }
         elseif (1 == $process)
         {
-            $this->setFlash('warning', 'le nom d\'utilisateur ne doit pas dépasser 30 caractères');
+            $this->setFlash('warning', 'le nom d\'utilisateur doit faire au minimum 3 carractères');
         }
         elseif (2 == $process)
         {
-            $this->setFlash('warning', 'le numéro de téléphone ne doit pas dépasser 20 caractères');
+            $this->setFlash('warning', 'le nom d\'utilisateur ne doit pas dépasser 30 caractères');
         }
         elseif (3 == $process)
         {
-            $this->setFlash('warning', 'le nom ne doit pas dépasser 100 caractères');
+            $this->setFlash('warning', 'le numéro de téléphone doit faire au minimum 8 caractères');
         }
         elseif (4 == $process)
+        {
+            $this->setFlash('warning', 'le numéro de téléphone ne doit pas dépasser 20 caractères');
+        }
+        elseif (5 == $process)
+        {
+            $this->setFlash('warning', 'le nom ne doit pas dépasser 100 caractères');
+        }
+        elseif (6 == $process)
         {
             $this->setFlash('warning', 'le prénom ne doit pas dépasser 100 caractères');
         }

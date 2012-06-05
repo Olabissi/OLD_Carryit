@@ -56,7 +56,15 @@ class RegistrationController extends BaseController
         }
         elseif (1 == $process)
         {
-            $this->setFlash('warning', 'le nom d\'utilisateur de noit pas dépasser 30 caractères ');
+            $this->setFlash('warning', 'la longueur maximum du nom d\'utilisateur est de 30 caractères ');
+        }
+        elseif (2 == $process)
+        {
+            $this->setFlash('warning', 'la longueur minimum du nom d\'utilisateur est de 3 caractères ');
+        }
+        elseif (3 == $process)
+        {
+            $this->setFlash('warning', 'la longueur minimum du mot de passe est de 5 caractères');
         }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.twig', array(
