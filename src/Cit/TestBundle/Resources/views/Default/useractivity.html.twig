@@ -45,12 +45,13 @@
             <b> {{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }} </b>
         </div>
     {% endif %}
-    {% if app.session.hasFlash('warning') %}
+    {# on ne montre pas les messages de type warning sur cette page #}
+    {# {% if app.session.hasFlash('warning') %}
         <div id="warning">
             <br/>
             <b> {{ app.session.flash('warning') }} </b>
         </div>
-    {% endif %}
+    {% endif %} #}
 </div>
 
 <div id="activitycontent" class="span11">

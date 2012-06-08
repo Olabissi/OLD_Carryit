@@ -31,24 +31,18 @@ class VoyageHandler
             if( $this->form->isValid() )
             {
                 $trip = $this->form->getData();
-                
-                if ($this->alreadyExists($trip))
-                {
-                    return 8;
-                }
-                
-                $departok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleDepart());
-                $arriveeok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleArrivee());
-                $aujdui = date('Ymd');
 
+                $departok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleDepart());
                 if (!$departok)
                 {
                     return 1;
                 }
+                $arriveeok = $this->em->getRepository('CitTestBundle:City')->isCity($trip->getVilleArrivee());
                 if (!$arriveeok)
                 {
                     return 2;
                 }
+                $aujdui = date('Ymd');
                 if ($aujdui > $trip->getDateDepart()->format('Ymd'))
                 {
                     return 3;
@@ -61,13 +55,17 @@ class VoyageHandler
                 {
                     return 5;
                 }
-                if (50 < $trip->getNbKgDisponibles())
+                if (23 < $trip->getNbKgDisponibles())
                 {
                     return 6;
                 }
                 if ($trip->getPrixParKg() < 0)
                 {
                     return 7;
+                }
+                if ($this->alreadyExists($trip, $current_user))
+                {
+                    return 8;
                 }
 
                 //appeler la fonction qui permet d'enregistrer le voyage dans la base de données
@@ -86,9 +84,22 @@ class VoyageHandler
         $this->em->flush();
     }
 
-    protected function alreadyExists(Voyage $voyage)
+    protected function alreadyExists(Voyage $voyage, User $user)
     {
-        var_dump($voyage->getUser());exit;
-        return false;
+        $voyage->setUser($user);
+        $userid = $voyage->getUser()->getId();
+        
+        $exists = $this->em->getRepository('CitTestBundle:Voyage')->findBy(array(
+            'user'=> $userid,
+            'ville_depart' => $voyage->getVilleDepart(),
+            'date_depart' => $voyage->getDateDepart(),
+            ));
+
+        if (!$exists)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

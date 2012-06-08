@@ -71,7 +71,7 @@ fos_user:
     #paramètres envoi email
     from_email:
         address:        noreply@carryit.net
-        sender_name:    Carryit admin
+        sender_name:    CARRY IT admin
 
     # Permet de renseigner le nouveau formulaire de profil 
     profile:
@@ -90,7 +90,7 @@ fos_user:
             template: CitUserBundle:Resetting:resetting.email.twig
             from_email:
                 address:        resetting@carryit.net
-                sender_name:    Carryit Password Resetting
+                sender_name:    CARRY IT Password Resetting
 
     # Permet d'activer la confirmation par email suite à une inscription
     registration:
@@ -99,7 +99,7 @@ fos_user:
             enabled: true
             from_email:
                 address:        registration@carryit.net
-                sender_name:    Carryit Registration
+                sender_name:    CARRY IT Registration
         form:
             handler: cit_user.form.handler.registration
 

@@ -797,7 +797,7 @@ class DefaultController extends Controller
         }
         elseif ( 3 == $number )
         {
-            $msg = 'la date de départ ne doit pas être déjà passée. Choisissez la date d\'aujourd\'hui ou une date dans le futur.';
+            $msg = 'Pour la date de départ, choisissez la date d\'aujourd\'hui ou une date dans le futur.';
         }
         elseif ( 4 == $number )
         {
@@ -809,11 +809,15 @@ class DefaultController extends Controller
         }
         elseif ( 6 == $number )
         {
-            $msg = 'Trop de kilogrammes disponibles. Le nombre maximum de kilos disponibles est 50.';
+            $msg = 'Trop de kilogrammes disponibles. Le nombre maximum de kilos disponibles est 23.';
         }
         elseif ( 7 == $number )
         {
             $msg = 'le prix proposé (en € par kilo) ne doit pas être inférieur à 0.';
+        }
+        elseif ( 8 == $number )
+        {
+            $msg = 'Pour cette ville de départ, vous avez déjà proposé un voyage à cette date de départ';
         }
 
         return $msg;
@@ -837,7 +841,19 @@ class DefaultController extends Controller
         }
         elseif ( 4 == $number )
         {
+            $msg = 'Colis trop lourd. Le poids maximal d\'un colis est de 23 kilogrammes.';
+        }
+        elseif ( 5 == $number )
+        {
             $msg = 'Sélectionnez une catégorie de colis parmi les suggestions.';
+        }
+        elseif ( 6 == $number )
+        {
+            $msg = 'Pour la date de livraison souhaitée, choisissez une date dans le futur.';
+        }
+        elseif ( 7 == $number )
+        {
+            $msg = 'Pour ce trajet, vous avez déjà proposé un colis à cette date de livraison';
         }
 
         return $msg;
