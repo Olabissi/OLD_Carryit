@@ -4231,10 +4231,72 @@ ul.ui-autocomplete
 }
 ul.ui-autocomplete li
 { 
-  background:white;
-  border-bottom:1px solid #DDD;
 }
 ul.ui-autocomplete li a
 {
   text-decoration:none;
+  width:216px;
+  float: left;
+  cursor:pointer;
+  border:1px solid #DDD;
+  border-top:0px;
+  background:white;
+  color:#000;
+ 
 }
+ul.ui-autocomplete li a:hover
+{
+ background-color: #D50;
+ color:#FFF;
+}
+
+input:focus:required:invalid:focus,
+textarea:focus:required:invalid:focus,
+select:focus:required:invalid:focus {
+  border-color: #D50;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+     -moz-box-shadow: 0 0 6px #f8b9b7;
+          box-shadow: 0 0 6px #f8b9b7;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(85, 221, 0, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+label.city,.carrydate
+{
+  font-weight:bold;
+}
+
+label.kilos
+{
+  font-weight:bold;
+}
+
+label.catego
+{
+  font-weight:bold;
+}
+

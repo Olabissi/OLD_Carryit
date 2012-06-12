@@ -87,6 +87,7 @@ class VoyageHandler
     protected function alreadyExists(Voyage $voyage, User $user)
     {
         $voyage->setUser($user);
+        $tripid = $voyage->getId();
         $userid = $voyage->getUser()->getId();
         
         $exists = $this->em->getRepository('CitTestBundle:Voyage')->findBy(array(
@@ -95,7 +96,18 @@ class VoyageHandler
             'date_depart' => $voyage->getDateDepart(),
             ));
 
-        if (!$exists)
+        //vérification pour les modifications de voyage
+        $tableau = array();
+        foreach ($exists as $value) 
+        {
+            if ($tripid != $value->getId())
+            {
+                //le voyage n'est pas celui qui est en train d'être modifié
+                $tableau[]=$value;
+            }
+        }
+
+        if (!$tableau)
         {
             return false;
         }

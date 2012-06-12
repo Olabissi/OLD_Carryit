@@ -17,14 +17,22 @@ class ColisType extends AbstractType
             ->add('Categorie','choice',array(
                 'choices' => $arraycategories,
                 'label' => 'Catégorie du colis',
-                'empty_value' => 'Sélectionnez une catégorie'
+                'empty_value' => 'Sélectionnez une catégorie',
+                'attr' => array(
+                    'class' => 'catego'),
                 ))
 
             ->add('Poids_kg','integer',array(
-                'label' => 'poids du colis (kg)'))
+                'label' => 'poids du colis (kg)',
+                'attr' => array(
+                    'class' => 'kilos'),
+                ))
 
             ->add('date_livraison_souhaitee','date',array(
-                'label' => 'date de livraison souhaitee'))
+                'label' => 'date de livraison souhaitee',
+                'attr' => array(
+                    'class' => 'carrydate'),
+                ))
 
             ->add('ville_depart', 'text', array(
                 'label' => 'ville de départ',
@@ -39,15 +47,15 @@ class ColisType extends AbstractType
                 ))
 
             ->add('NomDestinataire','text',array(
-                'label' => 'nom du destinataire',
+                'label' => 'nom du destinataire (facultatif)',
                 'required' => false))
 
             ->add('TelephoneDestinataire','text',array(
-                'label' => 'téléphone du destinataire',
+                'label' => 'téléphone du destinataire (facultatif)',
                 'required' => false))
 
             ->add('complement_info','text',array(
-                'label' => 'complement d\'information',
+                'label' => 'complement d\'information (facultatif)',
                 'required' => false))
         ;
     }

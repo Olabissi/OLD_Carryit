@@ -17,35 +17,44 @@ class VoyageType extends AbstractType
                     'class' => 'city'),
                 ))
 
-            ->add('departure_airport','text',array(
-                'required' => false,
-                'label' => 'aéroport de depart'))
-
             ->add('ville_arrivee', 'text', array(
                 'label' => 'ville d\'arrivée',
                 'attr' => array(
                     'class' => 'city'),
                 ))
 
+            ->add('departure_airport','text',array(
+                'required' => false,
+                'label' => 'aéroport de depart (facultatif)'))
+
             ->add('arrival_airport','text',array(
                 'required' => false,
-                'label' => 'aéroport d\'arrivée'))
+                'label' => 'aéroport d\'arrivée (facultatif)'))
 
             ->add('date_depart','date',array(
-                'label' => 'date de départ'))
+                'label' => 'date de départ',
+                'attr' => array(
+                    'class' => 'carrydate'),
+                ))
 
             ->add('date_arrivee','date',array(
-                'label' => 'date d\'arrivée'))
+                'label' => 'date d\'arrivée',
+                'attr' => array(
+                    'class' => 'carrydate'),
+                ))
 
             ->add('nb_kg_disponibles','integer',array(
-                'label' => 'nombre de kilos disponibles'))
+                'label' => 'nombre de kilos disponibles',
+                'attr' => array(
+                    'class' => 'kilos'),
+                ))
 
             ->add('prix_par_kg','integer',array(
-                'label' => 'prix proposé(en € par kilo)',
+                'label' => 'prix proposé, en € par kilo (facultatif)',
                 'required' => false))
 
             ->add('compagnie_air','text',array(
-                'label' => 'compagnie aérienne',
+                'label' => 'compagnie aérienne (facultatif)',
                 'required' => false))
         ;
     }

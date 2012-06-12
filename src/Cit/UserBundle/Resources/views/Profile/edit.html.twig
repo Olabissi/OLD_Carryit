@@ -6,6 +6,10 @@
 
 {% block fos_user_content %}
 	{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+
+	<a href="{{ path('CitUserBundle_homepage') }}">
+        retour à mon compte
+    </a>
 {% endblock %}
 
 

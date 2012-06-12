@@ -70,7 +70,7 @@ class ColisHandler
             }
         }
 
-        return 6;
+        return 50;
     }
 
     public function onSuccess(Colis $colis, User $user)
@@ -83,6 +83,7 @@ class ColisHandler
     protected function alreadyExists(Colis $colis, User $user)
     {
         $colis->setUser($user);
+        $packetid = $colis->getId();
         $userid = $colis->getUser()->getId();
         
         $exists = $this->em->getRepository('CitTestBundle:Colis')->findBy(array(
@@ -92,7 +93,18 @@ class ColisHandler
             'date_livraison_souhaitee' => $colis->getDateLivraisonSouhaitee(),
             ));
 
-        if (!$exists)
+        //vérification pour les modifications de colis
+        $tableau = array();
+        foreach ($exists as $value) 
+        {
+            if ($packetid != $value->getId())
+            {
+                //le colis n'est pas celui qui est en train d'être modifié
+                $tableau[]=$value;
+            }
+        }
+
+        if (!$tableau)
         {
             return false;
         }
