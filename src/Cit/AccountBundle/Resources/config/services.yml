@@ -1,7 +1,0 @@
-parameters:
-#    cit_account.example.class: Cit\AccountBundle\Example
-
-services:
-#    cit_account.example:
-#        class: %cit_account.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
