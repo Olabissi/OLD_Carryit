@@ -10,35 +10,38 @@
 {% endblock %}
 
 {% block search %}
-    <div>
+    <div id="searchcomments">
         <strong style="color:#A9BC23;">Un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
     	<strong style="color:#D50;">Un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
     </div>
-    <br/>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
 	{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
 {% endblock %}
 
 {% block body %}
-<div class="flash">
-	{% if app.session.hasFlash('notice') %}
-	    <div id="notice">
-		    <br/>{{ app.session.flash('notice') }}
-		</div>
-	{% endif %}
-	{% if app.session.hasFlash('fos_user_success') %}
-	    <div id="notice">
-		    <br/>{{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }}
-	    </div>
-	{% endif %}
-	{% if app.session.hasFlash('warning') %}
-		<div id="warning">
-		    <br/>{{ app.session.flash('warning') }}
-		</div>
-	{% endif %}
-</div>
-
 <div id="description">
     <div class="subtitle">Le Concept</div>
+    <div class="flash">
+		{% if app.session.hasFlash('notice') %}
+		    <div id="notice">
+			    <br/>{{ app.session.flash('notice') }}
+			</div>
+		{% endif %}
+		{% if app.session.hasFlash('fos_user_success') %}
+		    <div id="notice">
+			    <br/>{{ app.session.flash('fos_user_success')|trans({}, 'FOSUserBundle') }}
+		    </div>
+		{% endif %}
+		{% if app.session.hasFlash('warning') %}
+			<div id="warning">
+			    <br/>{{ app.session.flash('warning') }}
+			</div>
+		{% endif %}
+	</div>
     <div id="howitworks">
 	    <img src="{{ asset('bundles/cittest/images/concept_velocite.jpg') }}" alt="concept_velocite" 
 				width="850" height="239"/>

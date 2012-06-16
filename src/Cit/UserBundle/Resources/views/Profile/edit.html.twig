@@ -1,14 +1,14 @@
 {% extends "CitUserBundle::layout.html.twig" %}
 
-{% block header %}
-	Modifier mes infos
+{% block subtitle %}
+	Changer mes infos de profil
 {% endblock %}
 
 {% block fos_user_content %}
 	{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 
 	<a href="{{ path('CitUserBundle_homepage') }}">
-        retour à mon compte
+        retour à mon profil
     </a>
 {% endblock %}
 

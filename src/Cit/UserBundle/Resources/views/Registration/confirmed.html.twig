@@ -1,24 +1,19 @@
 {% extends "::layout.html.twig" %}
 
-{% block header %}
-	Confirmation d'inscription
-{% endblock %}
-
 {% block body %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+	<div class="subtitle">Confirmation d'inscription</div>
     
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
-    {% endif %}
-
-	<br />
-
-    <div id = "btnlogin" class="btn">
-		<a href="{{ url('fos_user_security_login') }}">
+    <div id="registrationconfirmation">
+	    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</p>
+	    
+	    {% if app.session is not empty %}
+	        {% set targetUrl = app.session.get('_security.target_path') %}
+	        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans({}, 'FOSUserBundle') }}</a></p>{% endif %}
+	    {% endif %}
+		<br />
+		<br />
+		<a class="button" href="{{ url('fos_user_security_login') }}">
 			connectez-vous
-			<br />
 		</a>
 	</div>
-	<br />
 {% endblock %}

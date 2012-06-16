@@ -560,13 +560,13 @@ class DefaultController extends Controller
         $departok = $em->getRepository('CitTestBundle:City')->isCity($depart);
         if (!$departok)
         {
-            $this->get('session')->setFlash('warning', 'choisissez la ville de départ parmi les suggestions');
+            $this->get('session')->setFlash('nocity', $this->CityFlashes(1));
             return $this->redirect( $this->generateUrl('CitTestBundle_homepage'));
         }
         $arriveeok = $em->getRepository('CitTestBundle:City')->isCity($arrivee);
         if (!$arriveeok)
         {
-            $this->get('session')->setFlash('warning', 'choisissez la ville d\'arrivée parmi les suggestions');
+            $this->get('session')->setFlash('nocity', $this->CityFlashes(2));
             return $this->redirect( $this->generateUrl('CitTestBundle_homepage'));
         }
 
@@ -791,11 +791,13 @@ class DefaultController extends Controller
 
         if ( 1 == $number )
         {
-            $msg = 'choisissez la ville de départ parmi les suggestions.';
+            //$msg = 'choisissez la ville de départ parmi les suggestions.';
+            $msg = $this->CityFlashes($number);
         }
         elseif ( 2 == $number )
         {
-            $msg = 'choisissez la ville d\'arrivée parmi les suggestions.';
+            //$msg = 'choisissez la ville d\'arrivée parmi les suggestions.';
+            $msg = $this->CityFlashes($number);
         }
         elseif ( 3 == $number )
         {
@@ -831,11 +833,13 @@ class DefaultController extends Controller
 
         if ( 1 == $number )
         {
-            $msg = 'choisissez la ville de départ parmi les suggestions.';
+            //$msg = 'choisissez la ville de départ parmi les suggestions.';
+            $msg = $this->CityFlashes($number);
         }
         elseif ( 2 == $number )
         {
-            $msg = 'choisissez la ville d\'arrivée parmi les suggestions.';
+            //$msg = 'choisissez la ville d\'arrivée parmi les suggestions.';
+            $msg = $this->CityFlashes($number);
         }
         elseif ( 3 == $number )
         {
@@ -856,6 +860,25 @@ class DefaultController extends Controller
         elseif ( 7 == $number )
         {
             $msg = 'Pour ce trajet, vous avez déjà proposé un colis à cette date de livraison';
+        }
+
+        return $msg;
+    }
+
+    protected function CityFlashes($number)
+    {
+        $msg = '';
+
+        if ( 1 == $number )
+        {
+            $msg = 'Si vous l\'avez bien orthographiée, alors la ville de départ n\'est pas référencée. 
+            Contactez-nous si vous souhaitez que cette ville fasse partie de nos villes référencées.';
+
+        }
+        elseif ( 2 == $number )
+        {
+            $msg = 'Si vous l\'avez bien orthographiée, alors la ville d\'arrivée n\'est pas référencée. 
+            Contactez-nous si vous souhaitez que cette ville fasse partie de nos villes référencées.';
         }
 
         return $msg;

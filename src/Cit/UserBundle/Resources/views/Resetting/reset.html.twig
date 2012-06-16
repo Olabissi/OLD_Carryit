@@ -1,5 +1,12 @@
 {% extends "::layout.html.twig" %}
 
+{% block title %}
+	CARRY IT - oubli de mot de passe
+{% endblock %}
+
 {% block body %}
-	{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+	<div class="subtitle">Nouveau mot de passe</div>
+	<div id="resetpwd">
+		{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+	</div>
 {% endblock %}

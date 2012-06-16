@@ -30,10 +30,14 @@ footer *{color:white;}
 #search{position: absolute;height:60px;width:57%;right:0px;float:right; padding:2px;margin: 8px 0px;}
 #search>span{position:relative;width:100%;}
 #search form{text-align:right;}
-#search>span>div{font-size:14px;padding:1px;}
-#search>span>div strong{font-size:16px;}
+#searchcomments{font-size:14px;padding:1px;}
+#searchcomments strong{font-size:16px;}
+.flash_city{text-align: center;width:100%;color :#D50;font-weight:bold;font-size:12px;margin:0px;}
+/*#search>span>div{font-size:14px;padding:1px;}
+#search>span>div strong{font-size:16px;}*/
 .city{width:150px;}
 
+#menu {margin-top: 10px;}
 #menu ul{list-style:none;width:1048px;height:24px;background:  url(../images/features_title.png) left top;margin:0px;}
 #menu li, #menu li a{display: inline;width:209px;height:24px;float:left;color:white;font-size:16px;text-align:center;font-weight:bold;}
 #menu li a:hover{color:#D50;text-decoration:none;}
@@ -165,13 +169,37 @@ input[type="color"]:focus,
 
 /* proposition d'un nouveau voyage ou colis*/
 #newtriporpacket{margin-top: 15px;}
+label.city,.carrydate{font-weight:bold;}
+label.kilos{font-weight:bold;}
+label.catego{font-weight:bold;}
 
 /* résultats d'une recherche de colis ou de voyage */
 #packetsfound,#tripsfound{margin-top: 15px;}
+#packetsfound a,#tripsfound a{color: #A9BC23;}
+#packetsfound a:hover,#tripsfound a:hover{color: #D50;}
 #nbresultspackets{color:#D50;width:100%;text-align:center;font-weight:bold;margin:10px 0px;}
 #nbresultstrips{color:#A9BC23;width:100%;text-align:center;font-weight:bold;margin:10px 0px;}
 #expediteur{color:#D50;}
 #voyageur{color:#A9BC23;}
+
+/* mon profil */
+#myprofile{margin-top: 15px}
+#surlecote{border: 3px solid #A9BC23;border-radius: 6px;margin-left :0px;float:left;}
+#surlecote a,#myprofile a{color: #A9BC23;}
+#surlecote a:hover,#myprofile a:hover{color: #D50;}
+
+/* page de login */
+#loginpage{margin-top: 15px;}
+#loginpage a{color: #A9BC23;}
+#loginpage a:hover{color: #D50;}
+
+/* page d'inscription */
+#registerpage,#registrationconfirmation{margin-top: 15px;}
+#registerpage a{color: #A9BC23;}
+#registerpage a:hover{color: #D50;}
+
+/* page de demande d'un nouveau mot de passe car mot de passe oublié */
+#resetpwd{margin-top: 15px;}
 
 /* messages flash */
 .flash{text-align: center;width:100%;}

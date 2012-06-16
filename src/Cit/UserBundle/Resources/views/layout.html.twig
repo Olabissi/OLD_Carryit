@@ -2,10 +2,10 @@
 {# On hérite du layout qui est dans le répertoire CarryitV0.0/app #}
 
 {% block title %}
-    Carry it - compte de {{ user.username }}
+    CARRY IT- compte de {{ user.username }}
 {% endblock %}
 
-{% block topmenu %}
+{% block toplogin %}
     {% if error %}
         {% include 'CitUserBundle:Security:login_nude.html.twig' with {'error': error, 'name': user.username } %}
     {% else %}
@@ -13,40 +13,40 @@
     {% endif %}
 {% endblock %} 
 
-{% block header %}
-{% endblock %}
-
 {% block body %}
 {# On y place le contenu du layout par défaut de FOSUB : https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/views/layout.html.twig #}    
-
-    {% for key, message in app.session.getFlashes() %}
-    <div class="{{ key }}">
-        {% if 'warning' == key %}
-        <div id="warning">
-            {{ message }}
+    <div class="subtitle">
+        {% block subtitle %}
+        {% endblock subtitle %}
+    </div>
+    <div class ="flash">
+        {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {% if 'warning' == key %}
+            <div id="warning">
+                {{ message }}
+            </div>
+            {% else %}
+            <div id="notice">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+            {% endif %}
         </div>
-        {% else %}
-        <div id="notice">
-            {{ message|trans({}, 'FOSUserBundle') }}
+        {% endfor %}
+    </div>
+
+    <div id="myprofile">
+        <div id="surlecote" class = "span3">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="{{ url('CitUserBundle_homepage') }}">mon profil</a></li>
+                <li><a href="{{ url('CitUserBundle_editinfospage') }}">changer mes infos de profil</a></li>
+                <li><a href="{{ url('CitUserBundle_changepwd') }}">changer mon mot de passe</a></li>
+                <li><a href="{{ path('CitUserBundle_deletemyaccount') }}">supprimer mon compte</a></li>
+            </ul>
         </div>
-        {% endif %}
+        <div class = "span10">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
     </div>
-    {% endfor %}
-
-    <div id="surlecote" class = "span2">
-        <ul class="nav nav-pills nav-stacked">
-            <li><a href="{{ url('CitUserBundle_homepage') }}">mes infos</a></li>
-            <li><a href="{{ url('CitUserBundle_editinfospage') }}">changer mes infos</a></li>
-            <li><a href="{{ url('CitUserBundle_changepwd') }}">changer mon mot de passe</a></li>
-            <li><a href="{{ path('CitUserBundle_deletemyaccount') }}">supprimer mon compte</a></li>
-        </ul>
-    </div>
-
-    <div class = "span8">
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-    </div>
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

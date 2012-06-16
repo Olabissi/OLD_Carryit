@@ -1,23 +1,26 @@
 {% extends "::layout.html.twig" %}
 
-{% block header %}
-	Inscription
-{% endblock %}
-
 {% block body %}
-	{% for key, message in app.session.getFlashes() %}
-    <div class="{{ key }}">
-        {% if 'warning' == key %}
-        <div id="warning">
-            {{ message }}
+    <div class="subtitle">Inscription</div>
+    <div id="registerpage">
+        <div class="flash">
+        	{% for key, message in app.session.getFlashes() %}
+            <div class="{{ key }}">
+                {% if 'warning' == key %}
+                <div id="warning">
+                    {{ message }}
+                </div>
+                {% else %}
+                <div id="notice">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
-        {% else %}
-        <div id="notice">
-            {{ message|trans({}, 'FOSUserBundle') }}
-        </div>
-        {% endif %}
+    	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        <a href="{{ path('CitTestBundle_homepage') }}">
+            retour à l'accueil
+        </a>
     </div>
-    {% endfor %}
-
-	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
 {% endblock %}
