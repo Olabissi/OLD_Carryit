@@ -1,12 +1,112 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
+		<link rel="stylesheet" href="{{ asset('bundles/cittest/css/main.css') }}" type="text/css" media="all">
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/html5.js"></script>
+		<style type="text/css">
+		.bg {behavior:url(js/PIE.htc)}
+		</style>
+		<![endif]-->
+		<!--[if lt IE 7]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+		<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
+		</div>
+		<![endif]-->
+	</head>
+
+	<body>
+		<header>
+			<div id="contact" class="span5">
+				N'hésitez pas à nous contacter : <br/>
+				<b>contact@carryit.net</b> <br/>
+				01 49 23 24 13 / 06 45 21 92 92 
+			</div>
+			<div id="login" class="span7">
+            	{% block toplogin %}
+            	{% endblock %}
+			</div>
+		</header>
+		<div id="main">
+			<div id="advertising" class="">
+				Le site est actuellement en <b>version beta</b>.</br>
+				N'hésitez pas à nous contacter si vous avez des commentaires ou des suggestions.
+			</div>
+			<div id="header">
+				<div id="logo">
+					<a href="{{ url('CitTestBundle_homepage') }}"> 
+					<img src="{{ asset('bundles/cittest/images/logo_carryit_RVB.png') }}" alt="carryit" width="140"> </a>
+				</div>
+				<div id="logo_commentaire" class="span3">
+					<h1>CARRY IT</h1>
+					<h4>transport de colis
+						<br/>
+						entre particuliers</h4>
+				</div>
+
+				<div id="search">
+					<span>
+                        {% block search %}{% endblock %}
+					</span>	
+				</div>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="{{ url('CitTestBundle_homepage') }}">Accueil</a></li>
+					<li><a href="{{ url('CitUserBundle_homepage') }}">Mon compte</a></li>
+					<li><a href="{{ url('CitTestBundle_useractivitypage') }}">Mon activité</a></li>
+					<li><a href="{{ url('CitTestBundle_addtrippage') }}">Proposer un voyage</a></li>
+					<li><a href="{{ url('CitTestBundle_addpacketpage') }}">Proposer un colis</a></li>
+
+				</ul>
+			</div>
+
+			<div id="content">
+				{% block body %}
+				{% endblock %}
+			</div>
+		</div>
+
+			<footer id="footer" >
+				<span id="footerleft"> <a href="{{ url('CitTestBundle_termsconditionspage') }}">
+					Conditions Générales d'Utilisation </a> </span>
+
+				<span id="footermiddle">
+				</span>
+
+				<span id="footerright"> 
+					<b>CARRY IT SAS</b><br/>
+					N° d'identification: 751 251 463 RCS Paris<br/>
+					adresse: 81, avenue de la république 75011 Paris<br/>
+					contact@carryit.net / 01 49 23 24 13 / 06 45 21 92 92<br/>
+				</span>
+
+				<div id="copyright">
+					2012 CARRY IT - Tous Droits Réservés
+				</div>
+			</footer>
+	</body>
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+		<script type="text/javascript" src="js/jquery-1.6.js" ></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	{% endblock %}
+
+</html>
+
+<!--<html>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-		<title>{% block title %}{% endblock %}</title>
+		{#<title>{% block title %}{% endblock %}</title>#}
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ asset('bundles/cittest/css/main.css') }}" type="text/css" media="all">
 		{% endblock %}
 	</head>
 
@@ -20,29 +120,26 @@
 			</div>
 			<div id= "logo_commentaire" class = "span3" >
 				<h3>CARRY IT</h3>
-				<h4>transport de colis<br /> entre particuliers</h4>
+				<h4>transport de colis<br/> entre particuliers</h4>
 			</div>
 			<div id="topmenucontent">
-	        	{% block topmenu %}
-				{% endblock %}
+	        	{#{% block topmenu %}{% endblock %}#}
 			</div>
 		</div>
 
         <div id="pubtop" class="container">
         	Le site est actuellement en <b>version alpha</b>.
-        	<br/>N'hésitez pas à donner vos commentaires ou suggestions à : contact@carryit.net
+        	<br/>N'hésitez pas à envoyer vos commentaires ou suggestions par email: contact@carryit.net
         </div>
 
 		<div class="container"> 
 			<div class="row">
 				<div id="header" class="span12">
-        			{% block header %}
-        			{% endblock %}
+        			{# {% block header %}{% endblock %} #}
        			</div>
 
 				<div id="content" class="span12">
-					{% block body %}
-					{% endblock %}
+					{#{% block body %}{% endblock %}#}
 				</div>
 			</div>
 
@@ -71,9 +168,4 @@
 			</div>
 		</div>
 	</body>
-
-	{% block javascripts %}
-		{# Ajoutez ce javascript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-		<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-	{% endblock %}
-</html>
+</html>-->

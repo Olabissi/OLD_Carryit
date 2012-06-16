@@ -356,6 +356,7 @@ class DefaultController extends Controller
         $result = $this->futureTrips($result);
 
         return $this->render('CitTestBundle:Default:tripsfound.html.twig', array(
+            'packet' => $entity,
             'number' => count($result),
             'result'      => $result,
             'name' => $current_user-> getUsername(),
@@ -538,6 +539,7 @@ class DefaultController extends Controller
         $result = $this->NotMyOwnTripsOrPackets($result,$current_user->getId());
 
         return $this->render('CitTestBundle:Default:packetsfound.html.twig', array(
+            'trip' => $entity,
             'number' => count($result),
             'result'      => $result,
             'name' => $current_user-> getUsername(),
@@ -576,7 +578,7 @@ class DefaultController extends Controller
         $session = $request->getSession();
         $error = $this->getError($request, $session);
 
-        if($this->getRequest()->get('_submit')=='rechercher un voyageur')
+        if($this->getRequest()->get('_submit')=='Chercher un voyageur')
         {
             $result = $em->getRepository('CitTestBundle:Voyage')->findBy(
                 array('ville_depart' => $depart, 'ville_arrivee' => $arrivee),

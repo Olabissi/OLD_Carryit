@@ -1,14 +1,11 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Nouveau voyage
-{% endblock %}
-
-{% block header %}
-    nouveau voyage
+    CARRY IT - Proposition de voyage
 {% endblock %}
 
 {% block body %}
+<div class="subtitle">Proposer un voyage</div>
 <div class="flash">
 	{% if app.session.hasFlash('notice') %}
 	    <div id="notice">
@@ -30,29 +27,12 @@
 	{% endif %}
 </div>
 
-<div id="surlecote" class = "span2">
-	<ul class="nav nav-pills nav-stacked">
-		<li><a href="{{ url('CitTestBundle_homepage') }}">Accueil</a></li>
-        <li><a href="{{ url('CitTestBundle_useractivitypage') }}">Mon activité</a></li>
-        <li><a href="{{ url('CitTestBundle_addpacketpage') }}">Nouveau colis</a></li>
-    </ul>
-</div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<div id="newtripform">
-
+<div id="newtriporpacket">
 	<form method="post" {{ form_enctype(form) }}>
-
 		{{ form_errors(form) }}
 		{{ form_widget(form) }}
-		{{ form_rest(form) }}
-		
-		<input type="submit" value="Valider"/>
+		{{ form_rest(form) }}	
+		<input class="button" type="submit" value="Valider"/>
 	</form>
 </div>
 {% endblock %}

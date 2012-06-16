@@ -1,38 +1,12 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Profil de {{name}}
-{% endblock %}
-
-{% block header %}
-    Mon activité
+    CARRY IT - Activité de {{name}}
 {% endblock %}
 
 {% block body %}
-<div id="usermenu" class="span11"> 
-    <span id = "usermenuactivity">
-        <a href="{{ url('CitTestBundle_useractivitypage') }}">
-                mon activité
-        </a>
-    </span>
-    <span id = "usermenuavis">
-        <a href="{{ url('CitTestBundle_useractivitypage') }}">
-                mes avis
-        </a>
-    </span>
-    <span id = "usermenualerts">
-        <a href="{{ url('CitTestBundle_useractivitypage') }}">
-                mes alertes
-        </a>
-    </span>
-    <span id = "usermenuaccount">
-        <a href="{{ url('CitUserBundle_homepage') }}">
-                mon compte
-        </a>
-    </span>
-</div>
-
-<div class="flash span11">
+<div class="subtitle">Mon activité</div>
+<div class="flash">
     {% if app.session.hasFlash('notice') %}
         <div id="notice">
             <br/>
@@ -54,8 +28,7 @@
     {% endif %} #}
 </div>
 
-<div id="activitycontent" class="span11">
-
+<div id="activitycontent" class="span12">
     <div class="span5">
         <table id="trips" class="table">
             <thead>
@@ -79,34 +52,35 @@
                     </td>
                     <td>
                         <ul>
-                            <li>
+                            <li id="tripoption">
                                 <a href="{{ path('CitTestBundle_editusertrippage', { 'id': entity.id }) }}">modifier
                                 </a>
                             </li>
+                            <li id="tripoption">
+                                <a  href="{{ path('CitTestBundle_cancelusertrippage', { 'id': entity.id }) }}">
+                                supprimer
+                                </a>
+                            </li>
                             <li>
-                                <a href="{{ path('CitTestBundle_cancelusertrippage', { 'id': entity.id }) }}">
-                                annuler
+                                </br>
+                            </li>
+                            <li>
+                                <a class ="button" href="{{ path('CitTestBundle_findpacket', { 'id': entity.id }) }}">
+                                    trouver un colis
                                 </a>
                             </li>
                         </ul>
-                        <div id = "search" class="btn">
-                            <a href="{{ path('CitTestBundle_findpacket', { 'id': entity.id }) }}">
-                                trouver un colis
-                            </a>
-                        </div>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <div id = "btnnewtrip" class="btn">
-            <a href="{{ path('CitTestBundle_addtrippage') }}">
-                proposer un nouveau voyage
-            </a>
-        </div>
+        <a class="button" href="{{ path('CitTestBundle_addtrippage') }}">
+            proposer un voyage
+        </a>
     </div>
 
-    <div class="span5">
+    <div class="span6">
         <table id="packets" class="table">
             <thead>
                 <tr>
@@ -117,17 +91,18 @@
             <tbody>
             {% for entity in packets %}
                 <tr>
-                    <td>
+                    <td id="packetsinfo">
         	            {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
         	            vers {{ entity.villearrivee }}<br />
 
         	            catégorie du contenu : {{ entity.Categorie }}<br />
 
-        				date de livraison souhaitée : 
+        				date de livraison : 
         				{{ entity.datelivraisonsouhaitee|date('d-m-Y') }}<br />
 
         	            {% if entity.NomDestinataire %} destinataire : {{ entity.NomDestinataire }} {% endif %}
-                        {% if entity.TelephoneDestinataire %}- phone: {{ entity.TelephoneDestinataire }} <br /> {% endif%}
+                        {% if entity.TelephoneDestinataire %}<br/>phone destinataire: 
+                        {{ entity.TelephoneDestinataire }} <br /> {% endif%}
 
         	            {% if entity.complementinfo %}infos complémentaires : {{ entity.complementinfo }} <br /> {% endif%}
 
@@ -135,31 +110,31 @@
                     </td>
                     <td>
                         <ul>
-                            <li>
+                            <li id="packetoption">
                                 <a href="{{ path('CitTestBundle_edituserpacketpage', { 'id': entity.id }) }}">modifier
                                 </a>
                             </li>
+                            <li id="packetoption">
+                                <a href="{{ path('CitTestBundle_canceluserpacketpage', { 'id': entity.id }) }}">supprimer
+                                </a>
+                            </li>
                             <li>
-                                <a href="{{ path('CitTestBundle_canceluserpacketpage', { 'id': entity.id }) }}">annuler
+                                </br>
+                            </li>
+                            <li id="findtripbtn">
+                                <a class="button" href="{{ path('CitTestBundle_findtrip', { 'id': entity.id }) }}">
+                                    trouver un voyage
                                 </a>
                             </li>
                         </ul>
-                        <div id = "search" class="btn">
-                            <a href="{{ path('CitTestBundle_findtrip', { 'id': entity.id }) }}">
-                                trouver un voyageur
-                            </a>
-                        </div>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <div id = "btnnewpacket" class="btn">
-            <a href="{{ path('CitTestBundle_addpacketpage') }}">
-                proposer un nouveau colis
-            </a>
-        </div>
+        <a class="button" href="{{ path('CitTestBundle_addpacketpage') }}">
+            proposer un colis
+        </a>
     </div>
-
 </div>
 {% endblock %}

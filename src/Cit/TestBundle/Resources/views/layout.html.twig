@@ -1,21 +1,5 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}
-{% endblock %}
-
-{% block stylesheets %}
-	<link href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
-
-{% block topmenu %}
+{% block toplogin %}
 	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'error': error, 'name': name} %}
-{% endblock %}
-
-{% block header %}
-{% endblock %}
-
-{% block body %}
-{% endblock %}
-
-{% block javascripts %}
 {% endblock %}

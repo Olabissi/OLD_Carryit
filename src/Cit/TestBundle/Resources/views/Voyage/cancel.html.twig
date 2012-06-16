@@ -1,14 +1,11 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Annulation de voyage
-{% endblock %}
-
-{% block header %}
-    annuler mon voyage
+    CARRY IT - Suppression de voyage
 {% endblock %}
 
 {% block body %}
+    <div class="subtitle">Supprimer un voyage</div>
     <div class="flash">
         {% if app.session.hasFlash('notice') %}
             <div id="notice">
@@ -29,29 +26,31 @@
             </div>
         {% endif %}
     </div>
-     
+
+    <div id="deletetrip"> 
+        <div>
+            <b>Souhaitez-vous supprimer ce voyage ?</b>
+        </div> 
+
+        <div>
+            Voyage de {{ entity.villedepart }} vers {{ entity.villearrivee }}
+            <br /> départ le {{ entity.datedepart|date('d-m-Y') }}, arrivée le {{ entity.datearrivee|date('d-m-Y') }}
+            <br /> via {{ entity.compagnieair }}
+            <br /> {{ entity.nbkgdisponibles }} kilos proposés, à {{ entity.prixparkg }} € le kilo
+            <br />
+        </div>
+
+        <form action="{{ path('CitTestBundle_deleteusertrip', { 'id': entity.id }) }}" method="post">
+            <p>
+                <br/>
+                <button class="button" type="submit">Supprimer</button>
+            </p>
+        </form>
+
+        <a href="{{ path('CitTestBundle_useractivitypage') }}">
+            retour à mon activité
+        </a>
     <div>
-        <h4>Souhaitez-vous supprimer ce voyage ?</h4>
-    </div> 
-
-    <div>
-        Voyage de {{ entity.villedepart }} vers {{ entity.villearrivee }}
-        <br /> départ le {{ entity.datedepart|date('d-m-Y') }}, arrivée le {{ entity.datearrivee|date('d-m-Y') }}
-        <br /> via {{ entity.compagnieair }}
-        <br /> {{ entity.nbkgdisponibles }} kilos proposés, à {{ entity.prixparkg }} € le kilo
-        <br />
-    </div>
-
-    <form action="{{ path('CitTestBundle_deleteusertrip', { 'id': entity.id }) }}" method="post">
-        <p>
-            <br/>
-            <button type="submit">Supprimer</button>
-        </p>
-    </form>
-
-    <a href="{{ path('CitTestBundle_useractivitypage') }}">
-        retour à la liste
-    </a>
 {% endblock %}
 
 

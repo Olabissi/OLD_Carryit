@@ -1,66 +1,81 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Recherche de Colis
-{% endblock %}
-
-{% block header %}
-    Trouver un colis à transporter
+    CARRY IT - Recherche de Colis
 {% endblock %}
 
 {% block body %}
-	<div>
-		{% if 0 == number %}	
-		    Nous sommes désolés, aucun résultat trouvé dans l'immédiat ne répond à votre demande.
-		    <br/>
-            <br/>
-			Nous prendrons contact avec vous par e-mail dès qu'un colis pouvant vous intéresser 
-			se manifeste.
-		{% elseif 1 == number %}
-			{{number}} résultat trouvé
-		{% else %}
-			{{number}} résultats trouvés
-		{% endif %}
-	</div>
-	<div>
-        {% if 0 != number %}
-	   	<table class="table">
-            <thead>
-                <tr>
-                    <th>Expéditeur</th>
-                    <th>Colis</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for entity in result %}
-                <tr>
-                	<td>
-                		{{ entity.user }}
-                		<br/>email: {{ entity.user.email }}
-                		<br/>numéro de téléphone: {{ entity.user.mobilephone }}
-                		<br/>{% if entity.user.nom %} nom: {{ entity.user.nom }}, <br/> {% endif %}
-                        {% if entity.user.prenom %} prénom: {{ entity.user.prenom }} <br/> {% endif %}
-                	</td>
-                    <td>
-                        {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
-                        vers {{ entity.villearrivee }}
+    <div class="subtitle">Recherche de Colis</div>
+    <div id="packetsfound">
+        <div>
+            <b>A l'occasion de votre voyage :</b><br/>
+            {{ trip.villedepart }} vers {{ trip.villearrivee }}
+            <br/> départ le {{ trip.datedepart|date('d-m-Y') }}
+            <br/> {{ trip.nbkgdisponibles }} kilos proposés
+            {% if null != trip.prixparkg %}, à {{ trip.prixparkg }} € le kilo <br/>{% endif %}
+            {% if trip.departureairport %} départ de {{ trip.departureairport }}  {% endif %}
+            {% if trip.arrivalairport %} vers {{ trip.arrivalairport }} <br/> {% endif %} 
+            {% if trip.compagnieair %} compagnie aérienne: {{ trip.compagnieair }}, <br/> {% endif %}
+            <br/><b>vous cherchez un colis à transporter.</b>
+        <div>
+    	<div>
+    		{% if 0 == number %}	
+    		    <br/>
+                Nous sommes désolés, aucun résultat trouvé dans l'immédiat ne répond à votre demande.
+    		    <br/>
+                <br/>
+    			Nous prendrons contact avec vous par e-mail dès qu'un colis pouvant vous intéresser 
+    			se manifeste.
+    		{% elseif 1 == number %}
+                <div id="nbresultspackets">
+    		       {{number}} résultat trouvé
+                </div>
+    		{% else %}
+                <div id="nbresultspackets">
+    			    {{number}} résultats trouvés
+                </div>
+    		{% endif %}
+    	</div>
+    	<div>
+            {% if 0 != number %}
+    	   	<table class="table">
+                <thead>
+                    <tr>
+                        <th id="expediteur">Expéditeur</th>
+                        <th>Colis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in result %}
+                    <tr>
+                    	<td>
+                    		{{ entity.user }}
+                    		<br/>email: {{ entity.user.email }}
+                    		<br/>numéro de téléphone: {{ entity.user.mobilephone }}
+                    		<br/>{% if entity.user.nom %} nom: {{ entity.user.nom }}, <br/> {% endif %}
+                            {% if entity.user.prenom %} prénom: {{ entity.user.prenom }} <br/> {% endif %}
+                    	</td>
+                        <td>
+                            {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
+                            vers {{ entity.villearrivee }}
 
-                        <br /> catégorie du contenu : {{ entity.Categorie }}
+                            <br /> catégorie du contenu : {{ entity.Categorie }}
 
-                        <br /> date de livraison souhaitée : 
-                        {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
+                            <br /> date de livraison souhaitée : 
+                            {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
 
-                        {% if entity.NomDestinataire %} destinataire : {{ entity.NomDestinataire }} {% endif %}
-                        {% if entity.TelephoneDestinataire %}- phone: {{ entity.TelephoneDestinataire }} <br /> {% endif%}
+                            {% if entity.NomDestinataire %} destinataire : {{ entity.NomDestinataire }} {% endif %}
+                            {% if entity.TelephoneDestinataire %}- phone: {{ entity.TelephoneDestinataire }} <br /> {% endif%}
 
-                        {% if entity.complementinfo %}infos complémentaires : {{ entity.complementinfo }} <br /> {% endif%}
+                            {% if entity.complementinfo %}infos complémentaires : {{ entity.complementinfo }} <br /> {% endif%}
 
-                        <br /> 
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-	    </table>
-        {% endif %}
-	</div>	
+                            <br /> 
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+    	    </table>
+            {% endif %}
+    	</div>
+    </div>	
 {% endblock %}

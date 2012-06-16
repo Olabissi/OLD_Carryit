@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block body %}
+    <div class="subtitle">Modifier un voyage</div>
 	<div class="flash">
 		{% if app.session.hasFlash('notice') %}
 		    <div id="notice">
@@ -30,18 +31,20 @@
 		{% endif %}
 	</div>
 
-	<form action="{{ path('CitTestBundle_updateusertrip', { 'id': entity.id }) }}" 
-	method="post" {{ form_enctype(edit_form) }}>
-	    {{ form_errors(edit_form) }}
-	    {{ form_widget(edit_form) }}
-	    <p>
-	        <button type="submit">Modifier</button>
-	    </p>
-	</form>
+	<div id="modifytrip">
+		<form action="{{ path('CitTestBundle_updateusertrip', { 'id': entity.id }) }}" 
+		method="post" {{ form_enctype(edit_form) }}>
+		    {{ form_errors(edit_form) }}
+		    {{ form_widget(edit_form) }}
+		    <p>
+		        <button class="button" type="submit">Modifier</button>
+		    </p>
+		</form>
 
-	<a href="{{ path('CitTestBundle_useractivitypage') }}">
-	    Retour à la liste
-	</a>
+		<a href="{{ path('CitTestBundle_useractivitypage') }}">
+		    Retour à mon activité
+		</a>
+	<div>
 {% endblock %}
 
 {% block javascripts %}

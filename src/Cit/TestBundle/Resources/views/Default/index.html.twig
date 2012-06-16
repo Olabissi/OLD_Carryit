@@ -1,16 +1,21 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-	Carryit - Vos colis vont voyager
+	CARRY IT - covoyages pour colis
 {% endblock %}
 
-{% block topmenu %}
+{% block toplogin %}
 	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
 	'csrf_token': token, 'error': error, 'name': name} %}
 {% endblock %}
 
-{% block header %}
-    Bienvenue
+{% block search %}
+    <div>
+        <strong style="color:#A9BC23;">Un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">Un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <br/>
+	{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
 {% endblock %}
 
 {% block body %}
@@ -32,92 +37,53 @@
 	{% endif %}
 </div>
 
-<div>
-	{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
-</div>
-
-<div id="article" class = "span7">
-	<h3 align = "center">Le Concept</h3>
-	<div id="explicationsvoyageur" class= "span3">
-		<h5 style= "color: #ff9900;"> Vous voyagez et n'utilisez pas tous vos kilos ? </h5>
-		<br/>
-		<ol>
-			<li>
-				Vous enregistrez les informations de <b>votre voyage</b> dans votre profil
+<div id="description">
+    <div class="subtitle">Le Concept</div>
+    <div id="howitworks">
+	    <img src="{{ asset('bundles/cittest/images/concept_velocite.jpg') }}" alt="concept_velocite" 
+				width="850" height="239"/>
+	    <ol>
+			<li index="1">
+				<span><b>1. </b><b style="color:#D50;">L'expéditeur</b> remet le colis au <b style="color:#A9BC23;">voyageur</b> dans la ville de départ</span>
 			</li>
-			<br/>
-			<li>
-				<b>Carryit vous met en relation</b> avec une personne souhaitant vous confier un colis à transporter
+			<li index="2">
+				<span><b>2. </b>Le <b style="color:#A9BC23;">voyageur</b> transporte le colis contre une rémunération</span>
 			</li>
-			<br/>
-			<li>
-				<b>Vous rencontrez l'expéditeur</b> physiquement, vérifiez le contenu du colis et finalisez avec lui les arrangements concernant <b>votre rémunération</b> pour le service que vous lui rendez
+			<li index="3">
+				<span><b>3. </b>Le <b style="color:#A9BC23;">voyageur</b> remet le colis au destinataire dans la ville de destination</span>
 			</li>
-			<br/>
-			<li>
-				<b>Vous voyagez avec le colis</b> et le remettez en main propre au <b>destinataire</b> qui vous a été spécifié par l'expéditeur
-			</li>
-			<br/>
 		</ol>
 	</div>
-	<div id="explicationsexpediteur" class="span3">
-		<h5 style= "color: #009900;"> Vous avez un colis à envoyer à un proche ? </h5>
-		<br/>
+	<div id="features">
 		<ol>
-			<li>
-				Vous enregistrez les informations sur <b>votre colis</b> dans votre profil
+			<li index="1">
+				<h4 class="subtitle">ECONOMIQUE</h4>
+				<span>réduction de vos <b style="color:#A9BC23;">frais de voyage</b><br/> 
+				réduction de vos <b style="color:#D50;">frais d'expédition</b></span>
 			</li>
-			<br/>
-			<li>
-				<b>Carryit vous met en relation</b> avec une personne souhaitant transporter votre colis
-				pour vous
+			<li index="2">
+				<h4 class="subtitle">RAPIDE</h4>
+				<span><b style="color:#A9BC23;">rémunération</b> immédiate<br/>
+				<b style="color:#D50;">livraison du colis</b> en quelques heures</span>
 			</li>
-			<br/>
-			<br/>
-			<li>
-				<b>Vous rencontrez le voyageur</b> physiquement, lui montrez le contenu du colis
-				et finalisez avec lui les arrangements concernant sa rémunération pour le service qu'il vous rend
+			<li index="3">
+				<h4 class="subtitle">ECOLOGIQUE</h4>
+				<span>réduction des émissions de CO2 grâce à un <b>meilleur remplissage de l'avion</b></span>
 			</li>
-			<br/>
-			<li>
-				<b>Le voyageur transporte votre colis</b> et remet le colis en main propre au 
-				<b>destinataire</b> que vous lui avez spécifié
-			</li>
-			<br/>
 		</ol>
-	</div>
-	<div id="schemaconcept">
-    	<img src="{{ asset('bundles/cittest/images/concept.png') }}" alt="concept" 
-			width="500" height="500"/>
 	</div>
 </div>
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	<div id = "connecteduser_btns" class = "span4">
-		<div id = "btnmonprofil" class="btn">
-			<a href="{{ url('CitTestBundle_useractivitypage') }}">
-				voir mon activité
-				<br />
-			</a>
-		</div>
+		<ul id = "connecteduser_btns" class = "span4">
+			<li><a class="button" href="{{ url('CitTestBundle_useractivitypage') }}">voir mon activité</a></li>
+			<li><a class="button" href="{{ url('CitTestBundle_addtrippage') }}">proposer un voyage</a></li>
+			<li><a class="button" href="{{ url('CitTestBundle_addpacketpage') }}">proposer un colis</a></li>
+		</ul>
 
-		<div id = "btnvoyage" class="btn">
-			<a href="{{ url('CitTestBundle_addtrippage') }}">
-				proposer un voyage
-				<br />
-			</a>
-		</div>
-
-		<div id = "btncolis" class="btn">
-			<a href="{{ url('CitTestBundle_addpacketpage') }}">
-				proposer un colis
-				<br />
-			</a>
-		</div>
-	</div>
 {% else %}
 	<div id="signup" class = "span4">
-		<h4 style="font-weight:bold;">Pas encore inscrit ? Rejoignez-nous !</h4>
+		<h4 style="font-weight:bold;">Pas encore inscrit ?<br/> Rejoignez-nous !</h4>
 		<br/>
 		{% include 'CitUserBundle:Registration:register_content.html.twig' with 
 		{'theme': theme, 'form': userform} %}

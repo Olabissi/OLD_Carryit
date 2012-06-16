@@ -1,6 +1,6 @@
-CitUserBundle_user:
-    resource: "@CitUserBundle/Resources/config/routing/user.yml"
-    prefix:   /cruduser
+#CitUserBundle_user:
+#    resource: "@CitUserBundle/Resources/config/routing/user.yml"
+#    prefix:   /cruduser
 
 CitUserBundle_homepage:
     pattern:  /myaccount

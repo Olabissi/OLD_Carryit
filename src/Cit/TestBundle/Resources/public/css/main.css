@@ -1,0 +1,179 @@
+@font-face{font-family:'Francois';
+src:url('../fonts/FrancoisOne/FrancoisOne.eot');
+src:url('../fonts/FrancoisOne/FrancoisOne.eot?#iefix') format('embedded-opentype'),
+url('../fonts/FrancoisOne/FrancoisOne.woff') format('woff'),
+url('../fonts/FrancoisOne/FrancoisOne.ttf') format('truetype'),
+url('../fonts/FrancoisOne/FrancoisOne.svg#FrancoisOneRegular') format('svg');font-weight:normal;font-style:normal;}
+/*body{background:url(../images/bg.png) center top repeat-y; }*/
+a{color:#FFF;}
+h1,h2,h3,h4,h5,h6 {color:white; }
+header, footer {background: #A9BC23 url(../images/header_top.png) center top; position: relative;width:100%;z-index:2;}
+header{border-bottom:2px solid #FFF;height:54px;}
+header *,footer * {font-family: Arial;}
+footer{height:96px;float:left;}
+footer *{color:white;}
+
+#main{position:relative; width:1048px; margin:0px auto; background: white;}
+#contact{color:#FFF;}
+#advertising{height:96px;width:980px;margin:10px auto;border:1px solid #888;color:#888;}
+#header h1,#header h4{text-shadow:1px 1px #444;color:#D50;}
+#header{height:120px;position: relative;}
+#logo,#logo_commentaire,#login{position:absolute;}
+#login{right:0px;top:2px;}
+#login input{margin:0px;}
+#login a{margin-left:16px;}
+#login a:hover{color:#D50;}
+#logout{text-align: right;  margin:5px;color :#FFF;font-weight: bold;}
+#logo_commentaire{left:155px;top:8px;}
+#logo{left:8px;top:5px;}
+
+#search{position: absolute;height:60px;width:57%;right:0px;float:right; padding:2px;margin: 8px 0px;}
+#search>span{position:relative;width:100%;}
+#search form{text-align:right;}
+#search>span>div{font-size:14px;padding:1px;}
+#search>span>div strong{font-size:16px;}
+.city{width:150px;}
+
+#menu ul{list-style:none;width:1048px;height:24px;background:  url(../images/features_title.png) left top;margin:0px;}
+#menu li, #menu li a{display: inline;width:209px;height:24px;float:left;color:white;font-size:16px;text-align:center;font-weight:bold;}
+#menu li a:hover{color:#D50;text-decoration:none;}
+
+#content,#article{margin-bottom:10px;margin-top:10px;}
+
+#signup div{}
+#signup h4{padding-left:10px;text-align: center;}
+#signup,#connecteduser_btns{position:absolute;right:0px;border:1px solid #A9BC23;float:right;width:24%;height:344px;border-radius:11px;overflow:hidden;}
+#signup input,#signup label{margin-left:8%}
+#signup h3, #signup h4{color:#D50;}
+#connecteduser_btns{list-style-type: none;border:none;position: absolute;top:350px;}
+#connecteduser_btns li {padding:8px;height:32px;text-align: center;}
+#connecteduser_btns .button{width:200px;height:16px;float:left;padding:4px;font-size:14px;}
+#connecteduser_btns a:hover {color: #FFF;text-decoration: none;}
+/*#content #explicationsvoyageur{display:block;}
+#content h1{text-shadow:1px 1px 1px #840; color:#F80;margin:10px;}*/
+#description li{display: inline;position:relative;float:left; width:29%; margin:2%; border-radius:3px}
+#description{position: relative;width:75%;height:420px;float:left;margin-bottom: 10px;}
+#description  ol{margin:0px;}
+
+#howitworks {position: relative;width:100%;height:300px;float:left;margin-bottom: 10px;}
+#howitworks li{position: relative; height:60px; width:230px;}
+#howitworks  li span {font-size:14px;color:black;padding:8px 0px;}
+
+#features {position: relative;width:100%;height:160px;float:left;margin:10px 0px;height:80px;}
+#features li{position: relative;height:60px;text-align: center;}
+
+.subtitle{font-size:18px;color:#D50;padding:2px;border:1px solid #D50;border-radius:3px;text-align:center;}
+
+#savoirplus { float:right;width:100%;height:48px;overflow:hidden;margin-bottom:8px;position:relative;}
+#savoirplus a{width:92%;margin-left:4%;height:18px;float:left;font-weight: bold}
+#footer>span{margin-left:2%;margin-top:1%;height:100%;}
+#footerleft{width:418px;float:left;}
+#footermiddle{width:450px;}
+#footerright{width:350px;float:right;}
+#copyright{position:absolute;bottom:0px;width:100%;text-align:center;float:left;font-weight: bold;}
+
+#footer{margin:10px 0px;}
+
+.button{background:#D50;color:#FFF;border:0px;border-radius: 3px;font-weight:bold;padding:4px;}
+.button:hover{background-color: #F72;text-decoration:none;}
+
+ul.ui-autocomplete
+{ 
+  list-style:none;
+  border:1px solid #DDD;
+  width:210px;
+}
+ul.ui-autocomplete li a
+{
+  text-decoration:none;
+  width:140px;
+  float: left;
+  cursor:pointer;
+  border:1px solid #DDD;
+  /*border-top:0px;*/
+  background:white;
+  color:#000;
+}
+ul.ui-autocomplete li a:hover
+{
+ background-color: #D50;
+ color:#FFF;
+}
+
+input:focus:required:invalid:focus,
+textarea:focus:required:invalid:focus,
+select:focus:required:invalid:focus {
+  border-color: #D50;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+     -moz-box-shadow: 0 0 6px #f8b9b7;
+          box-shadow: 0 0 6px #f8b9b7;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(85, 221, 0, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* page useractivity */
+#activitycontent {text-align: center;position:relative;left:40px;margin-bottom: 10px}
+#activitycontent ul{list-style: none;}
+#activitycontent li{color: #A9BC23;}
+#activitycontent li:hover{color: #D50;}
+#activitycontent a:hover {color: #FFF;text-decoration: none;}
+
+#trips{margin: 20px;border: 3px solid #A9BC23;border-radius:10px;}
+#tripoption a{color: #A9BC23;}
+#tripoption a:hover{color: #D50;text-decoration: underline;}
+
+#packets{margin: 20px;border: 3px solid #D50;border-radius:10px;}
+#packetoption a{color: #A9BC23;}
+#packetoption a:hover{color: #D50;text-decoration: underline;}
+#packetsinfo {width:280px;}
+
+#findtripbtn {position:relative;float:left;}
+
+/* annulation d'un voyage ou colis*/
+#deletetrip,#deletepacket{margin-top: 15px;}
+#deletetrip a,#deletepacket a{color: #A9BC23;}
+#deletetrip a:hover,#deletepacket a:hover{color: #D50;}
+
+/* modification d'un voyage ou colis*/
+#modifytrip,#modifypacket{margin-top: 15px;}
+#modifytrip a,#modifypacket a{color: #A9BC23;}
+#modifytrip a:hover,#modifypacket a:hover{color: #D50;}
+
+/* proposition d'un nouveau voyage ou colis*/
+#newtriporpacket{margin-top: 15px;}
+
+/* résultats d'une recherche de colis ou de voyage */
+#packetsfound,#tripsfound{margin-top: 15px;}
+#nbresultspackets{color:#D50;width:100%;text-align:center;font-weight:bold;margin:10px 0px;}
+#nbresultstrips{color:#A9BC23;width:100%;text-align:center;font-weight:bold;margin:10px 0px;}
+#expediteur{color:#D50;}
+#voyageur{color:#A9BC23;}
+
+/* messages flash */
+.flash{text-align: center;width:100%;}
+#notice{color :#A9BC23;font-weight:bold;}
+#warning{color :#D50;font-weight:bold;} 

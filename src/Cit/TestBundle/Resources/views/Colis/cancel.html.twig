@@ -1,14 +1,11 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Annulation de colis
-{% endblock %}
-
-{% block header %}
-    annuler mon colis
+    CARRY IT - Suppression de colis
 {% endblock %}
 
 {% block body %}
+    <div class="subtitle">Supprimer un colis</div>
     <div class="flash">
         {% if app.session.hasFlash('notice') %}
             <div id="notice">
@@ -29,36 +26,38 @@
             </div>
         {% endif %}
     </div>
-     
-    <div>
-        <h4>Souhaitez-vous supprimer ce colis ?</h4>
-    </div> 
-    
-    <div>
-        Colis de {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
-        vers {{ entity.villearrivee }}
 
-        <br /> contenu du colis : {{ entity.Categorie }}
+    <div id="deletepacket"> 
+        <div>
+            <b>Souhaitez-vous supprimer ce colis ?</b>
+        </div> 
+        
+        <div>
+            Colis de {{ entity.Poidskg }} kg à expédier de {{ entity.villedepart }} 
+            vers {{ entity.villearrivee }}
 
-        <br /> date de livraison souhaitée : 
-        {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
+            <br /> contenu du colis : {{ entity.Categorie }}
 
-        <br /> destinataire : {{ entity.NomDestinataire }} - 
-        joignable au: {{ entity.TelephoneDestinataire }}
+            <br /> date de livraison souhaitée : 
+            {{ entity.datelivraisonsouhaitee|date('d-m-Y') }}
 
-        <br /> {% if entity.complementinfo %}
-        infos complémentaires : {{ entity.complementinfo }}
-        {% endif%}
+            <br /> destinataire : {{ entity.NomDestinataire }} - 
+            joignable au: {{ entity.TelephoneDestinataire }}
+
+            <br /> {% if entity.complementinfo %}
+            infos complémentaires : {{ entity.complementinfo }}
+            {% endif%}
+        </div>
+
+        <form action="{{ path('CitTestBundle_deleteuserpacket', { 'id': entity.id }) }}" method="post">
+            <p>
+                <br/>
+                <button class="button" type="submit">Supprimer</button>
+            </p>
+        </form>
+
+        <a href="{{ path('CitTestBundle_useractivitypage') }}">
+            retour à mon activité
+        </a>
     </div>
-
-    <form action="{{ path('CitTestBundle_deleteuserpacket', { 'id': entity.id }) }}" method="post">
-        <p>
-            <br/>
-            <button type="submit">Supprimer</button>
-        </p>
-    </form>
-
-    <a href="{{ path('CitTestBundle_useractivitypage') }}">
-        retour à la liste
-    </a>
 {% endblock %}

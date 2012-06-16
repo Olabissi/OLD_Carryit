@@ -1,10 +1,10 @@
-CitTestBundle_crudvoyage:
-    resource: "routing/voyage.yml"
-    prefix:   /crudvoyage
+#CitTestBundle_crudvoyage:
+#    resource: "routing/voyage.yml"
+#    prefix:   /crudvoyage
 
-CitTestBundle_crudcolis:
-    resource: "routing/colis.yml"
-    prefix:   /crudcolis
+#CitTestBundle_crudcolis:
+#    resource: "routing/colis.yml"
+#    prefix:   /crudcolis
 
 CitTestBundle_homepage:
     pattern:  /

@@ -1,14 +1,11 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-    Carryit - Modification d'un colis
-{% endblock %}
-
-{% block header %}
-    modifier mon colis
+    CARRY IT - Modification de colis
 {% endblock %}
 
 {% block body %}
+	<div class="subtitle">Modifier un colis</div>
 	<div class="flash">
 		{% if app.session.hasFlash('notice') %}
 		    <div id="notice">
@@ -29,18 +26,19 @@
 			</div>
 		{% endif %}
 	</div>
+	<div id="modifypacket">
+		<form action="{{ path('CitTestBundle_updateuserpacket', { 'id': entity.id }) }}" 
+		method="post" {{ form_enctype(edit_form) }}>
+		    {{ form_widget(edit_form) }}
+		    <p>
+		        <button class="button" type="submit">Modifier</button>
+		    </p>
+		</form>
 
-	<form action="{{ path('CitTestBundle_updateuserpacket', { 'id': entity.id }) }}" 
-	method="post" {{ form_enctype(edit_form) }}>
-	    {{ form_widget(edit_form) }}
-	    <p>
-	        <button type="submit">Modifier</button>
-	    </p>
-	</form>
-
-	<a href="{{ path('CitTestBundle_useractivitypage') }}">
-	    retour à la liste
-	</a>
+		<a href="{{ path('CitTestBundle_useractivitypage') }}">
+		    retour à mon activité
+		</a>
+	</div>
 {% endblock %}
 
 {% block javascripts %}
