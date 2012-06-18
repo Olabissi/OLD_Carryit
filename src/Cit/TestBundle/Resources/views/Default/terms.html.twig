@@ -1,18 +1,55 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-	Carryit - Conditions Générales
+	CARRY IT - Conditions Générales
 {% endblock %}
 
-{% block topmenu %}
-	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+{% block toplogin %}
+    {% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
 	'csrf_token': token, 'error': error, 'name': name} %}
 {% endblock %}
 
-{% block header %}
-    CGU - CGV
-{% endblock %}
-
 {% block body %}
-	page en construction
+<div class="subtitle">Conditions Générales d'Utilisation</div>
+<div id="cgu">
+    <OL type="I">
+	    <LI>Définitions</LI>
+	    	<div id="definition">
+	    	CARRY IT : désigne la société éditant les services de transport de colis entre particuliers proposés sur le site web www.carryit.net et dans les agences commerciales physiques.
+	    	<br/>
+	    	<br/>
+	    	colis : désigne l’élément ou le groupe d’éléments, avec son emballage, que l’expéditeur souhaite faire parvenir à un destinataire donné. Le colis contient des éléments de divers types (vêtements, jouets, livres, etc…).
+	    	<br/>
+	    	<br/>
+	    	expéditeur : désigne la personne physique qui souhaite faire parvenir un colis à un destinataire.
+	    	<br/>
+	    	<br/>
+	    	voyageur : désigne la personne physique ayant prévu d’effectuer un voyage par avion.Le voyageur met des kilos de bagage à disposition d’éventuels expéditeurs, transporte un colis pour un expéditeur et livre ce colis au destinataire.
+	    	<br/>
+	    	<br/>
+	    	destinataire : désigne la personne physique à qui l’expéditeur souhaite faire parvenir un colis.
+	    	<br/>
+	    	<br/>
+	    	transport : désigne le voyage que le voyageur effectue en possession d’un colis
+	    	<br/>
+	    	<br/>
+	    	site : désigne le site web www.carryit.net.
+	    	<br/>
+	    	<br/>
+	    	utilisateur : désigne une personne physique inscrite sur le site, sans distinction entre un expéditeur ou un voyageur.
+	    	<br/>
+	    	<br/>
+	    	compte utilisateur : désigne le compte virtuel qui doit être créé pour devenir utilisateur et accéder aux services proposés sur www.carryit.net .
+	    	</div>
+	    <LI>Avis important</LI>
+	    <LI>Accès aux services</LI>
+	    <LI>Expéditeur</LI>
+	    <LI>Voyageur</LI>
+	    <LI>Tarification, Rémunération et Paiements</LI>
+	    <LI>Responsabilité de CARRY IT</LI>
+	    <LI>Données Personnelles</LI>
+	    <LI>Dispositions Générales</LI>
+	    <LI>Litiges</LI>
+    </OL>
+</div>
 {% endblock %}

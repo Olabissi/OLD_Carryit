@@ -205,3 +205,6 @@ label.catego{font-weight:bold;}
 .flash{text-align: center;width:100%;}
 #notice{color :#A9BC23;font-weight:bold;}
 #warning{color :#D50;font-weight:bold;} 
+
+/* conditions générales */
+#cgu{margin-top: 15px;}
