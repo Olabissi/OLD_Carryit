@@ -70,13 +70,15 @@ footer *{color:white;}
 
 #savoirplus { float:right;width:100%;height:48px;overflow:hidden;margin-bottom:8px;position:relative;}
 #savoirplus a{width:92%;margin-left:4%;height:18px;float:left;font-weight: bold}
+#footer{margin:10px 0px;}
+#footer a:hover{color:#D50;}
 #footer>span{margin-left:2%;margin-top:1%;height:100%;}
 #footerleft{width:418px;float:left;}
 #footermiddle{width:450px;}
 #footerright{width:350px;float:right;}
 #copyright{position:absolute;bottom:0px;width:100%;text-align:center;float:left;font-weight: bold;}
 
-#footer{margin:10px 0px;}
+
 
 .button{background:#D50;color:#FFF;border:0px;border-radius: 3px;font-weight:bold;padding:4px;}
 .button:hover{background-color: #F72;text-decoration:none;}
