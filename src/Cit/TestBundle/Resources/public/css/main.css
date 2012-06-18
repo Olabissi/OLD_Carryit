@@ -208,3 +208,6 @@ label.catego{font-weight:bold;}
 
 /* conditions générales */
 #cgu{margin-top: 15px;}
+#cgu li{font-weight: bold;color:#D50;margin-bottom: 10px;font-size: 20px;}
+#cgu_colisinterdits{font-weight: normal;color:black;margin-bottom: 0px;font-size: 12px;}
+#cguexpediteur li{font-weight: normal;color:#333;margin-bottom: 0px;font-size: 13px;}
