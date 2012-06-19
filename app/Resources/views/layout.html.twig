@@ -7,6 +7,20 @@
 			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
 			<link rel="stylesheet" href="{{ asset('bundles/cittest/css/main.css') }}" type="text/css" media="all">
 		{% endblock %}
+
+		<!--google-analytics-->
+		<script type="text/javascript"> 
+			  var _gaq = _gaq || [];
+			  _gaq.push(['_setAccount', 'UA-32768776-1']);
+			  _gaq.push(['_trackPageview']);
+
+			  (function() {
+			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+		</script>
+
 		<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/html5.js"></script>
 		<style type="text/css">
@@ -85,7 +99,7 @@
 					<b>CARRY IT SAS</b><br/>
 					N° d'identification: 751 251 463 RCS Paris<br/>
 					adresse: 81, avenue de la république 75011 Paris<br/>
-					contact@carryit.net / 01 49 23 24 13 / 06 45 21 92 92<br/>
+					contact@carryit.net / 06 45 21 92 92<br/>
 				</span>
 
 				<div id="copyright">

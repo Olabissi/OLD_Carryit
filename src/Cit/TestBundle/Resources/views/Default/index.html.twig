@@ -19,7 +19,9 @@
 			{{ app.session.flash('nocity') }}
 		{% endif %}
 	</div>
-	{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
 {% endblock %}
 
 {% block body %}

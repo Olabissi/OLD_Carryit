@@ -15,7 +15,7 @@ footer *{color:white;}
 
 #main{position:relative; width:1048px; margin:0px auto; background: white;}
 #contact{color:#FFF;}
-#advertising{height:96px;width:980px;margin:10px auto;border:1px solid #888;color:#888;}
+#advertising{height:50px;width:1048px;margin:10px auto;border:1px solid #888;color:#888;}
 #header h1,#header h4{text-shadow:1px 1px #444;color:#D50;}
 #header{height:120px;position: relative;}
 #logo,#logo_commentaire,#login{position:absolute;}
@@ -27,14 +27,13 @@ footer *{color:white;}
 #logo_commentaire{left:155px;top:8px;}
 #logo{left:8px;top:5px;}
 
-#search{position: absolute;height:60px;width:57%;right:0px;float:right; padding:2px;margin: 8px 0px;}
+#search{position: absolute;height:60px;width:61%;right:0px;float:right; padding:2px;margin: 8px 0px;}
 #search>span{position:relative;width:100%;}
 #search form{text-align:right;}
 #searchcomments{font-size:14px;padding:1px;}
 #searchcomments strong{font-size:16px;}
 .flash_city{text-align: center;width:100%;color :#D50;font-weight:bold;font-size:12px;margin:0px;}
-/*#search>span>div{font-size:14px;padding:1px;}
-#search>span>div strong{font-size:16px;}*/
+#findtripsorpackets{position: relative;float: left;}
 .city{width:150px;}
 
 #menu {margin-top: 10px;}
@@ -77,7 +76,6 @@ footer *{color:white;}
 #footermiddle{width:450px;}
 #footerright{width:350px;float:right;}
 #copyright{position:absolute;bottom:0px;width:100%;text-align:center;float:left;font-weight: bold;}
-
 
 
 .button{background:#D50;color:#FFF;border:0px;border-radius: 3px;font-weight:bold;padding:4px;}
