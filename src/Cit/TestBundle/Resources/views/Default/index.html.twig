@@ -11,8 +11,8 @@
 
 {% block search %}
     <div id="searchcomments">
-        <strong style="color:#A9BC23;">Un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
-    	<strong style="color:#D50;">Un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
     </div>
     <div class="flash_city">
 		{% if app.session.hasFlash('nocity') %}
@@ -84,11 +84,13 @@
 			<li><a class="button" href="{{ url('CitTestBundle_useractivitypage') }}">voir mon activité</a></li>
 			<li><a class="button" href="{{ url('CitTestBundle_addtrippage') }}">proposer un voyage</a></li>
 			<li><a class="button" href="{{ url('CitTestBundle_addpacketpage') }}">proposer un colis</a></li>
+			<li><a class="button" href="{{ url('CitUserBundle_homepage') }}">mon compte</a></li>
 		</ul>
 
 {% else %}
 	<div id="signup" class = "span4">
-		<h4 style="font-weight:bold;">Pas encore inscrit ?<br/> Rejoignez-nous !</h4>
+		<h4>Pas encore inscrit ?</h4>
+		<h4 style="font-weight:bold;">Rejoignez-nous c'est GRATUIT !</h4>
 		<br/>
 		{% include 'CitUserBundle:Registration:register_content.html.twig' with 
 		{'theme': theme, 'form': userform} %}

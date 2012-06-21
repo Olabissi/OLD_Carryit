@@ -85,7 +85,8 @@ class ColisType extends AbstractType
             "telephone" => "telephone mobile",
             "tickets" => "cartes,coupons,tickets",
             "outils" => "outils de bricolage",
-            "medicaments" => "medicaments"
+            "medicaments" => "medicaments",
+            "docs" => "documents"
             );
 
         return $arraycategories;

@@ -7,6 +7,7 @@
 			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
 			<link rel="stylesheet" href="{{ asset('bundles/cittest/css/main.css') }}" type="text/css" media="all">
 		{% endblock %}
+		<link rel="icon" type="image/png" href="{{ asset('bundles/cittest/images/favicon.ico') }}" />
 
 		<!--google-analytics-->
 		<script type="text/javascript"> 
@@ -19,6 +20,10 @@
 			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			  })();
+		</script>
+
+		<script type="text/javascript">
+        	function sizebody(){if($('#content').height()<350)$('#content').css('height','350px');}
 		</script>
 
 		<!--[if lt IE 9]>
@@ -34,7 +39,7 @@
 		<![endif]-->
 	</head>
 
-	<body>
+	<body onload="sizebody()">
 		<header>
 			<div id="contact" class="span5">
 				N'hésitez pas à nous contacter : <br/>
@@ -109,9 +114,9 @@
 	</body>
 
 	{% block javascripts %}
-		<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-		<script type="text/javascript" src="js/jquery-1.6.js" ></script>
-		<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-1.7.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/cittest/js/jquery-ui-1.8.20.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 	{% endblock %}
 
 </html>
