@@ -23,7 +23,7 @@
 		</script>
 
 		<script type="text/javascript">
-        	function sizebody(){if($('#content').height()<350)$('#content').css('height','350px');}
+        	function sizebody(){if($('#content').height()<350)$('#content').css('height','400px');}
 		</script>
 
 		<!--[if lt IE 9]>
@@ -76,11 +76,12 @@
 			</div>
 			<div id="menu">
 				<ul>
-					<li><a href="{{ url('CitTestBundle_homepage') }}">Accueil</a></li>
-					<li><a href="{{ url('CitTestBundle_addtrippage') }}">Proposer un voyage</a></li>
-					<li><a href="{{ url('CitTestBundle_addpacketpage') }}">Proposer un colis</a></li>
-					<li><a href="{{ url('CitTestBundle_useractivitypage') }}">Mon activité</a></li>
-					<li><a href="{{ url('CitUserBundle_homepage') }}">Mon compte</a></li>
+					<li><a id="menuoption_home" href="{{ url('CitTestBundle_homepage') }}">Accueil</a></li>
+					<li><a id="menuoption_addtrip" href="{{ url('CitTestBundle_addtrippage') }}">Proposer voyage</a></li>
+					<li><a id="menuoption_addpacket" href="{{ url('CitTestBundle_addpacketpage') }}">Proposer colis</a></li>
+					<li><a id="menuoption_howitworks" href="{{ url('CitTestBundle_howitworkspage') }}">Comment ça marche ?</a></li>
+					<li><a id="menuoption_useractivity" href="{{ url('CitTestBundle_useractivitypage') }}">Mon activité</a></li>
+					<li><a id="menuoption_myaccount" href="{{ url('CitUserBundle_homepage') }}">Mon compte</a></li>
 				</ul>
 			</div>
 
@@ -92,18 +93,24 @@
 
 			<footer id="footer" >
 				<span id="footerleft"> 
+					<a href="{{ url('CitTestBundle_howitworkspage') }}">
+					Comment ça marche ? </a><br/>
 					<a href="{{ url('CitTestBundle_termsconditionspage') }}">
-					Conditions Générales d'Utilisation </a>
+					Conditions Générales d'Utilisation </a><br/>
+					<a href="{{ url('CitTestBundle_legalnotice') }}">
+					Mentions légales </a><br/>
 				</span>
 
 				<span id="footermiddle">
 				</span>
 
 				<span id="footerright"> 
-					<b>CARRY IT SAS</b><br/>
-					N° d'identification: 751 251 463 RCS Paris<br/>
-					adresse: 81, avenue de la république 75011 Paris<br/>
-					contact@carryit.net / 06 45 21 92 92<br/>
+					<a href="{{ url('CitTestBundle_charter') }}">
+					Charte du bon expéditeur/voyageur </a><br/>
+					<a href="{{ url('CitTestBundle_prohibitedPackets') }}">
+					Colis interdits </a><br/>
+					<a href="{{ url('CitTestBundle_dodgyPackets') }}">
+					Colis réglementés </a><br/>
 				</span>
 
 				<div id="copyright">

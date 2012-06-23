@@ -87,5 +87,19 @@ CitTestBundle_seeTripsOrPackets:
     defaults: { _controller: CitTestBundle:Default:seeTripsOrPackets }
     requirements: { _method: post }
 
+CitTestBundle_prohibitedPackets:
+    pattern:  /prohibitedpackets
+    defaults: { _controller: CitTestBundle:Default:showProhibited }
 
+CitTestBundle_dodgyPackets:
+    pattern:  /dodgypackets
+    defaults: { _controller: CitTestBundle:Default:showDodgy }
+
+CitTestBundle_charter:
+    pattern:  /charter
+    defaults: { _controller: CitTestBundle:Default:showCharter }
+
+CitTestBundle_legalnotice:
+    pattern:  /legal
+    defaults: { _controller: CitTestBundle:Default:showLegal }
 

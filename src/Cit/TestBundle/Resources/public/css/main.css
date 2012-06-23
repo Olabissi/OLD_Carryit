@@ -22,7 +22,7 @@ footer *{color:white;}
 #login{right:0px;top:2px;}
 #login input{margin:0px;}
 #login a{margin-left:16px;}
-#login a:hover{color:#D50;}
+#login a:hover{color:#FFF;}
 #logout{text-align: right;  margin:5px;color :#FFF;font-weight: bold;}
 #logo_commentaire{left:155px;top:8px;}
 #logo{left:8px;top:5px;}
@@ -38,8 +38,14 @@ footer *{color:white;}
 
 #menu {margin-top: 10px;}
 #menu ul{list-style:none;width:1048px;height:24px;background:  url(../images/features_title.png) left top;margin:0px;}
-#menu li, #menu li a{display: inline;width:209px;height:24px;float:left;color:white;font-size:16px;text-align:center;font-weight:bold;}
+#menu li, #menu li a{display: inline;height:24px;float:left;width:174px;color:white;font-size:16px;font-weight:bold;margin-top: 1px;}
 #menu li a:hover{color:#D50;text-decoration:none;}
+#menuoption_home{position:relative;left:50px;}
+#menuoption_addtrip{position:relative;left:0px;}
+#menuoption_addpacket{position:relative;left:10px;}
+#menuoption_howitworks{position:relative;left:0px;}
+#menuoption_useractivity{position:relative;left:50px;}
+#menuoption_myaccount{position:relative;left:30px;}
 
 #content,#article{margin-bottom:10px;margin-top:10px;float:left;width:1048px;}
 
@@ -67,11 +73,12 @@ footer *{color:white;}
 #features li{position: relative;height:60px;text-align: center;}
 
 .subtitle{font-size:18px;color:#D50;padding:2px;border:1px solid #D50;border-radius:3px;text-align:center;}
+.subsubtitle{font-weight: bold;color:#D50;margin-bottom: 10px;font-size: 16px;}
 
 #savoirplus { float:right;width:100%;height:48px;overflow:hidden;margin-bottom:8px;position:relative;}
 #savoirplus a{width:92%;margin-left:4%;height:18px;float:left;font-weight: bold}
 #footer{margin-top:10px;}
-#footer a:hover{color:#D50;}
+#footer a:hover{color:#FFF}
 #footer>span{margin-left:2%;margin-top:1%;height:100%;}
 #footerleft{width:418px;float:left;}
 #footermiddle{width:450px;}
@@ -216,6 +223,35 @@ label.catego{font-weight:bold;}
 
 /* conditions générales */
 #cgu{margin-top: 15px;}
-#cgu li{font-weight: bold;color:#D50;margin-bottom: 10px;font-size: 20px;}
+#cgu a{color: #A9BC23;}
+#cgu a:hover{color: #D50;}
+#cgu li{font-weight: bold;color:#D50;margin-bottom: 5px;font-size: 20px;margin-top: 20px;}
 #cgu_colisinterdits{font-weight: normal;color:black;margin-bottom: 0px;font-size: 12px;}
-#cguexpediteur li{font-weight: normal;color:#333;margin-bottom: 0px;font-size: 13px;}
+#cguexpediteur li{font-weight: normal;color:#333;margin: 0px;font-size: 13px;}
+
+/* comment ça marche */
+#howitworkspage a{color: #A9BC23;}
+#howitworkspage a:hover{color: #D50;}
+#howitworkspage h5{text-align: center;}
+#howitworks_intro{margin: 10px 0px;}
+#howitworks_explanations{margin-bottom: 15px;}
+#explicationsvoyageur{margin-bottom: 15px;}
+#explicationsexpediteur{margin-bottom: 15px;}
+#howitworks_security{float: left;margin-bottom: 15px;}
+#howitworks_fees{float: left;margin-bottom: 15px;}
+#howitworks_charter{float:left;margin-bottom: 15px;}
+
+/* objets interdits */
+#prohibited{margin: 10px 0px;}
+
+/* objets règlementés*/
+#dodgy{margin: 10px 0px;}
+
+/* charte du bon utilisateur */
+#charter{margin: 10px 0px;}
+#charter a:hover{color: #D50;}
+#charter a{color: #A9BC23;}
+#charter li{margin-top: 15px;margin-bottom: 0px;}
+
+/* mentions légales */
+#legalnotice{margin:10px 0px;}

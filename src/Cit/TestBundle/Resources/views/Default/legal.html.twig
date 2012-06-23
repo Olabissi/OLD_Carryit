@@ -1,0 +1,38 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	CARRY IT - Comment ça marche
+{% endblock %}
+
+{% block toplogin %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block search %}
+    <div id="searchcomments">
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div class="subtitle">Mentions légales</div>
+	<ul id="legalnotice">
+		<li class="subsubtitle">Editeur du site</li>
+			<p>Le site www.carryit.net est édité par CARRY IT SAS, société par Actions Simplifiées au capital de 1000 euros, représentée par M. Boris Olabissi Adjovi,<br/>agissant en qualité de Président Directeur Général.<br/>
+			email: contact@carryit.net<br/>
+			adresse du siège social: 84 avenue de la République 75011 Paris  - n° d'identification 751 251 463 RCS Paris</p>
+		<li class="subsubtitle">Hébergement</li>
+			L'hébergement du Site est assuré par la société GANDI, Société par Actions Simplifiée au capital de 37.000€ - 423 093 459 RCS PARIS<br/>
+			adresse du siège social: 63-65 boulevard Masséna 75013 Paris
+	</ul>
+{% endblock %}

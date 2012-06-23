@@ -1,0 +1,51 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	CARRY IT - colis interdits
+{% endblock %}
+
+{% block toplogin %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block search %}
+    <div id="searchcomments">
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
+{% endblock %}
+
+{% block body %}
+<div class="subtitle">Colis interdits</div>
+<div id="prohibited">
+	<div>
+	Les éléments suivants sont interdits vers toutes destinations (domestiques ou internationales) ou doivent être obligatoirement être accompagnées d'une autorisation qui doit pouvoir être présentée aux Douanes. 
+	</div>
+	<br/>
+	<ul>
+		<li>matières biologiques périssables, infectieuses ou non infectieuses.</li>
+		<li>organes et dépouilles humain.</li>
+		<li>stupéfiants et les matières psychotropes.</li>
+		<li>objets obscènes ou immoraux.</li>
+		<li>produits de contrefaçon.</li>
+		<li>animaux vivants (sauf conditions spécifiques).</li>
+		<li>animaux morts.</li>
+		<li>matières explosives (y compris les munitions inertes ou factices), inflammables (alcools, parfums) radioactives ou corrosives.
+		<li>matières dangereuses telles que le gaz comprimé ou tout objet contenant du gaz ou de l’aire comprimé ou liquide (produits aérosols, canots de sauvetage, extincteurs,etc...).</li>
+		<li>bijoux, métaux précieux, billets de banque, valeurs au porteur, or ou argent, et autres objets de valeurs (sauf conditions spécifiques).</li>
+		<li>objets qui par leur nature ou leur emballage, peuvent présenter un danger pour les agents, salir ou détériorer les affaires personnelles du voyageur ou des autres voyageurs ou l’équipement utilisé par le voyageur.
+		<li>déchets dangereux.</li>
+		<li>biens culturels ayant un intérêt majeur pour le patrimoine national.</li>
+		<li>envois dont le caractère sensible est soumis à des formalités particulières : armes, médicaments, tabacs, amiante, marchandises stratégiques utilisables à des fins civiles ou militaires ou produits issus d’espèces animales ou végétales sauvages protégées par la Convention de Washington.</li>
+	</ul>
+</div>
+{% endblock %}

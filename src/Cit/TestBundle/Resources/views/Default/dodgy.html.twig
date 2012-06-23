@@ -1,0 +1,55 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	CARRY IT - colis règlementés
+{% endblock %}
+
+{% block toplogin %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block search %}
+    <div id="searchcomments">
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
+{% endblock %}
+
+{% block body %}
+<div class="subtitle">Colis règlementés</div>
+<div id="dodgy">
+	<div>
+		Vous trouverez ci-dessous une liste (non-exhaustive) d'éléments auxquels vous devriez accorder une attention particulière.<br/>
+		Ces éléments doivent être déclarés aux services de douane.
+	</div>
+	<br/>
+	<ul>
+		<li>L’alcool</li>
+		<li>Le tabac</li>
+		<li>Les médicaments</li>
+		<li>Les carburants</li>
+		<li>Les matériels photo, vidéo et les ordinateurs</li>
+		<li>Les nouveaux véhicules à moteur</li>
+		<li>Les œuvres d’arts et les bien culturels</li>
+		<li>Les eaux conditionnées</li>
+		<li>Les viandes, le lait et leurs produits dérivés</li>
+		<li>Les produits de la pêche</li>
+		<li>Les autres denrées alimentaires</li>
+		<li>Les animaux de compagnie</li>
+		<li>Les végétaux et les produits végétaux</li>
+		<li>Les espèces animales et végétales menacées d’extinction</li>
+		<li>Les objets issus d’espèces protégées</li>
+		<li>Les contrefaçons</li>
+	</ul>
+	Vous pouvez aussi consulter le site suivant : http://www.douane.gouv.fr
+</div>
+{% endblock %}

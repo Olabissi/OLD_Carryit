@@ -1,18 +1,117 @@
 {% extends "CitTestBundle::layout.html.twig" %}
 
 {% block title %}
-	Carryit - Comment ça marche
+	CARRY IT - Comment ça marche
 {% endblock %}
 
-{% block topmenu %}
+{% block toplogin %}
 	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
 	'csrf_token': token, 'error': error, 'name': name} %}
 {% endblock %}
 
-{% block header %}
-    Comment ça marche ?
+{% block search %}
+    <div id="searchcomments">
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
 {% endblock %}
 
 {% block body %}
-	page en construction
+	<div class="subtitle">Comment ça marche ?</div>
+	<div id="howitworkspage">
+        <div id="howitworks_intro">
+        	<b>CARRY IT propose un service GRATUIT de mise en relation entre des voyageurs et des expéditeurs de colis.</b> <br/>
+        	Vous rentrez facilement en contact avec quelqu'un qui souhaite expédier un colis (expéditeur), ou avec quelqu'un qui souhaite transporter un colis (voyageur).
+        </div>
+        <div class="subsubtitle">Fonctionnement</div>
+        <div id="howitworks_explanations">
+			<div id="explicationsvoyageur" class= "span6">
+				<h5 style= "color: #A9BC23;"> Vous êtes voyageur ? </h5>
+				<br/>
+				<ol>
+					<li>
+						Après vous être identifié sur le site, vous <a href="{{ url('CitTestBundle_addtrippage') }}">proposez un voyage</a> sur le site, en précisant le nombre de kilos que vous souhaitez mettre à disposition.
+					</li>
+					<br/>
+					<li>
+						Grâce au site www.carryit.net, <b>vous trouvez facilement un expéditeur</b> proposant un colis qui vous convient. Vous obtenez son adresse e-mail et éventuellement son numéro de téléphone.
+					</li>
+					<br/>
+					<li>
+						Après avoir contacté l'expéditeur, <b>vous le rencontrez physiquement</b>, vérifiez le contenu du colis et finalisez avec lui les arrangements concernant votre rémunération pour le service que vous lui rendez.
+					</li>
+					<br/>
+					<li>
+						<b>Vous voyagez avec le colis</b> et assurez sa livraison conformément à ce qui a été convenu avec l'expéditeur.
+					</li>
+				</ol>
+			</div>
+			<div id="explicationsexpediteur" class="span6">
+				<h5 style= "color: #D50;"> Vous êtes expéditeur ? </h5>
+				<br/>
+				<ol>
+					<li>
+						Après vous être identifié sur le site, vous <a href="{{ url('CitTestBundle_addpacketpage') }}">proposez un colis</a>, en précisant le poids en kilos de ce colis.
+					</li>
+					<br/>
+					<li>
+						Grâce au site www.carryit.net, <b>vous trouvez facilement un voyageur</b> pouvant transporter votre colis. Vous obtenez son adresse e-mail et éventuellement son numéro de téléphone.
+					</li>
+					<br/>
+					<li>
+						Après avoir contacté le voyageur, <b>vous le rencontrez physiquement</b>, lui montrez le contenu du colis et finalisez avec lui les arrangements concernant sa rémunération pour le service qu'il vous rend.
+					</li>
+					<br/>
+					<li>
+						<b>Le voyageur transporte votre colis</b> et assure la livraison conformément à ce qui a été convenu au préalable avbec lui. 
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div id="howitworks_security">
+			<div class="subsubtitle">Sécurité</div>
+			<div>Le service est basé sur la confiance, mais il est nécessaire d'adopter certaines mesures de sécurité.</div>
+			<br/>
+			<div id="securitevoyageur" class="span6">
+				<h5 style= "color: #A9BC23;"> Voyageur </h5>
+				<ul>
+					<li>Ne pas accepter de transporter des <a href="{{ url('CitTestBundle_prohibitedPackets') }}">éléments interdits</a></li>
+					<li>Se renseigner sur la règlementation douanière spécifique du pays de départ et du pays d'arrivée.Consultez la <a href="{{ url('CitTestBundle_dodgyPackets') }}">liste des objets réglementés</a> </li>
+					<li>Vérifier le contenu du colis en présence de l'expéditeur. Ne pas hésiter à défaire l'emballage du colis, puis à le refaire en présence de l'expéditeur.</li>
+				</ul>
+			</div>
+			<div id="securiteexpediteur" class="span6">
+				<h5 style= "color: #D50;"> Expéditeur </h5>
+				<ul>
+					<li>Ne pas confier au voyageur de colis contenant des <a href="{{ url('CitTestBundle_prohibitedPackets') }}">éléments interdits</a></li>
+					<li>Se renseigner sur la règlementation douanière spécifique du pays de départ et du pays d'arrivée. Consultez la <a href="{{ url('CitTestBundle_dodgyPackets') }}">liste des objets réglementés</a> </li>
+					<li>Permettre au voyageur de vérifier le contenu du colis, à si besoin défaire l'emballage du colis, et le refaire en votre présence.</li>
+				</ul>
+			</div>
+		</div>
+		<div id="howitworks_fees">
+		    <div class="subsubtitle">Tarifs</div>
+		    Le voyageur fixe son prix pour le transport d'un colis.<br/>
+		    CARRY IT suggère au voyageur d'appliquer les tarifs suivants :
+		    <ul>
+		    	<li> pour les enveloppes et documents : <b>entre 10 et 30 euros</b> </li>
+		    	<li> pour les autres colis : <b>entre 5 euros par kilo et 15 euros par kilo</b></li>
+		    </ul>
+		</div>
+		<div id="howitworks_charter">
+			<div class="subsubtitle">Charte de bonne conduite</div>
+			<div>
+				Afin de garantir un bon déroulement des différentes étapes du fonctionnement d'un transport de colis, 
+				le voyageur et l'expéditeur doivent respecter les règles énoncées dans la <a href="{{ url('CitTestBundle_charter') }}">charte du bon utilisateur</a>.
+			</div>
+		</div>
+	</div>
 {% endblock %}

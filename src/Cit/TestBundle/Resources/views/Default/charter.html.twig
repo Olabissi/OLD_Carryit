@@ -1,0 +1,51 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+	CARRY IT - Charte du bon expéditeur/voyageur
+{% endblock %}
+
+{% block toplogin %}
+	{% include 'CitUserBundle:Security:login_nude.html.twig' with {'last_username': lastusername, 
+	'csrf_token': token, 'error': error, 'name': name} %}
+{% endblock %}
+
+{% block search %}
+    <div id="searchcomments">
+        <strong style="color:#A9BC23;">un voyage prévu ?</strong> Trouvez un colis à transporter ! <br/>
+    	<strong style="color:#D50;">un colis &agrave; expédier ?</strong> Trouvez un voyageur pour transporter votre colis !
+    </div>
+    <div class="flash_city">
+		{% if app.session.hasFlash('nocity') %}
+			{{ app.session.flash('nocity') }}
+		{% endif %}
+	</div>
+	<div id="findtripsorpackets">
+		{% include 'CitTestBundle:Default:findtripsorpackets.html.twig' with {'csrf_token': token} %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div class="subtitle">Charte du bon expéditeur/voyageur</div>
+	<div id="charter">
+	    <ol>
+		    <li class="subsubtitle">La Charte</li>
+			    Le bon utilisateur CARRY IT est responsable et honnête.<br/>
+			    La présente charte s'applique à tous les utilisateurs du site www.carryit.net (voyageurs et expéditeurs).
+		    <li class="subsubtitle">Transport du Colis</li>
+			    Le voyageur s'engage à ne publier sur le site que des voyages qu'il va réellement faire.
+		        Les informations de rémunération pour le transport, le nombre de kilos disponibles et toutes autres informations relatives au voyage doivent être exactes.Le voyageur s'engage à transporter le colis vers la ville de destination et effectuer la livraison au destinataire conformément à ce qui a été convenu avec l'expéditeur.En cas d'impossiblité de livraison, le voyageur devrait en informer l'expéditeur rapidement, et s'accorder avec lui sur une solution.<br/>
+		        De même, l'expéditeur s'engage à ne publier sur le site que des colis qu'il veut réellement envoyer.
+		        Les informations sur le poids du colis, son contenu et toutes autres informations relatives au colis doivent être exactes.
+		        L'expéditeur s'engage à faciliter la livraison du colis par le voyageur à la ville d'arrivée, en invitant le destinataire du colis à se déplacer.
+		    <li class="subsubtitle">Loi</li>
+			    L'utilisateur s'engage à ne pas envoyer ou transporter de produits dangereux ou interdits
+			    (voir la liste des <a href="{{ url('CitTestBundle_prohibitedPackets') }}">éléments interdits</a>).<br/>
+			    L'utilisateur se renseigne avant le voyage sur les règlementations douanières spécifiques au pays de départ et au pays d'arrivée.
+		    <li class="subsubtitle">Transparence</li>
+			    Lors de la rencontre entre voyageur et expéditeur, chacun doit pouvoir présenter à l'autre une pièce d'identité valide.<br/>
+			    Aussi, le voyageur doit pouvoir présenter à l'expéditeur ses billets d'avion si ce dernier lui demande et l'expéditeur doit présenter le contenu de son colis au voyageur.
+		    <li class="subsubtitle">Gratification du voyageur</li>
+			    L'expéditeur s'engage à verser au voyageur la gratification pour le transport effectué, à hauteur du montant indiqué dans l'annonce du voyageur.
+	    </ol>
+	</div>
+{% endblock %}

@@ -705,6 +705,78 @@ class DefaultController extends Controller
                   ));
     }
 
+    public function showProhibitedAction()
+    {
+        //récupération des paramètres pour l'affichage du topmenu
+        $name = $this->getAnonym();
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+        $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
+        $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
+
+        return $this->render('CitTestBundle:Default:prohibited.html.twig', 
+            array('lastusername' => $lastUsername, 
+                  'error' => $error, 
+                  'token' => $csrfToken,
+                  'name' => $name,
+                  ));
+    }
+
+    public function showDodgyAction()
+    {
+        //récupération des paramètres pour l'affichage du topmenu
+        $name = $this->getAnonym();
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+        $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
+        $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
+
+        return $this->render('CitTestBundle:Default:dodgy.html.twig', 
+            array('lastusername' => $lastUsername, 
+                  'error' => $error, 
+                  'token' => $csrfToken,
+                  'name' => $name,
+                  ));
+    }
+
+    public function showCharterAction()
+    {
+        //récupération des paramètres pour l'affichage du topmenu
+        $name = $this->getAnonym();
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+        $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
+        $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
+
+        return $this->render('CitTestBundle:Default:charter.html.twig', 
+            array('lastusername' => $lastUsername, 
+                  'error' => $error, 
+                  'token' => $csrfToken,
+                  'name' => $name,
+                  ));
+    }
+
+    public function showLegalAction()
+    {
+        //récupération des paramètres pour l'affichage du topmenu
+        $name = $this->getAnonym();
+        $request = $this->container->get('request');
+        $session = $request->getSession();
+        $error = $this->getError($request, $session);
+        $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
+        $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
+
+        return $this->render('CitTestBundle:Default:legal.html.twig', 
+            array('lastusername' => $lastUsername, 
+                  'error' => $error, 
+                  'token' => $csrfToken,
+                  'name' => $name,
+                  ));
+    }
+
     public function getCitiesAction()
     {
         $term=isset($_GET['term'])?$_GET['term']:'Aa';
