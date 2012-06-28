@@ -79,10 +79,10 @@ footer *{color:white;}
 #savoirplus a{width:92%;margin-left:4%;height:18px;float:left;font-weight: bold}
 #footer{margin-top:10px;}
 #footer a:hover{color:#FFF}
-#footer>span{margin-left:2%;margin-top:1%;height:100%;}
+#footer>span{margin-left:2%;margin-top:1%;height:80%;}
 #footerleft{width:418px;float:left;}
-#footermiddle{width:450px;}
-#footerright{width:350px;float:right;}
+#footermiddle{width:350px;float:left;position:relative;left:120px;}
+#footerright{width:350px;float:right;position:relative;left:100px;}
 #copyright{position:absolute;bottom:0px;width:100%;text-align:center;float:left;font-weight: bold;}
 
 
