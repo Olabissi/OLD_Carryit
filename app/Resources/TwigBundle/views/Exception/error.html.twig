@@ -1,0 +1,18 @@
+{% extends "CitTestBundle::layout.html.twig" %}
+
+{% block title %}
+    erreur: {{ status_text }}
+{% endblock %}
+
+{% block body %}
+
+        <h2>Oops! Une erreur est survenue! </h2>
+        <h3>Le serveur a renvoyé "{{ status_code }} {{ status_text }}".</h3>
+
+        <p>
+            Pour nous aider à résoudre le problème, vous pouvez nous envoyer un email à : contact@carryit.net, 
+            et nous indiquer ce que vous faisiez quand l'erreur est survenue.<br/>
+            Toutes nos excuses pour le désagrément occasioné.
+        </p>
+
+{% endblock %}
